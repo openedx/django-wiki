@@ -198,4 +198,9 @@ class Migration(SchemaMigration):
         }
     }
 
+    # The migration 'django_notify' should be run first
+    depends_on = (
+        ( "django_notify", "0001_initial" ),
+    )
+
     complete_apps = ['wiki']
