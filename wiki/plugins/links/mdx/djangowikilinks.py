@@ -31,23 +31,16 @@ except ImportError:
     from markdown import etree #@UnresolvedImport @Reimport
 
 class WikiPathExtension(markdown.Extension):
-    def __init__(self, configs):
-        # set extension defaults
-        self.config = {
-                        'base_url' : ['/', 'String to append to beginning of URL.'],
-                        'html_class' : ['wikipath', 'CSS hook. Leave blank for none.'],
-                        'live_lookups' : [True, 'If the plugin should try and match links to real articles'],
-                        'default_level' : [2, 'The level that most articles are created at. Relative links will tend to start at that level.']
-        }
-        
-        # Override defaults with user settings
-        for key, value in configs :
-            # self.config[key][0] = value
-            self.setConfig(key, value)
-        
+    config = {
+        'base_url': ['/', 'String to append to beginning of URL.'],
+        'html_class': ['wikipath', 'CSS hook. Leave blank for none.'],
+        'live_lookups': [True, 'If the plugin should try and match links to real articles'],
+        'default_level': [2, 'The level that most articles are created at. Relative links will tend to start at that level.'],
+    }
+
     def extendMarkdown(self, md, md_globals):
         self.md = md
-        
+
         # append to end of inline patterns
         WIKI_RE =  r'\[(?P<linkTitle>[^\]]+?)\]\(wiki:(?P<wikiTitle>[a-zA-Z\d\./_-]*)\)'
         wikiPathPattern = WikiPath(WIKI_RE, self.config, markdown_instance=md)
@@ -58,7 +51,7 @@ class WikiPath(markdown.inlinepatterns.Pattern):
     def __init__(self, pattern, config, **kwargs):
         markdown.inlinepatterns.Pattern.__init__(self, pattern, **kwargs)
         self.config = config
-    
+
     def handleMatch(self, m) :
         from wiki import models
         article_title = m.group('wikiTitle')
@@ -66,7 +59,7 @@ class WikiPath(markdown.inlinepatterns.Pattern):
         if article_title.startswith("/"):
             absolute = True
         article_title = article_title.strip("/")
-        
+
         # Use this to calculate some kind of meaningful path
         # from the link, regardless of whether or not something can be
         # looked up
@@ -75,7 +68,7 @@ class WikiPath(markdown.inlinepatterns.Pattern):
         if absolute:
             base_path = self.config['base_url'][0]
             path_from_link = os_path.join(base_path, article_title)
-            
+
             urlpath = None
             path = path_from_link
             if self.config['live_lookups'][0]:
@@ -91,23 +84,23 @@ class WikiPath(markdown.inlinepatterns.Pattern):
             # one more component would make a path of length self.config['default_level']
             starting_level = max(0, self.config['default_level'][0] - 1 )
             starting_path = "/".join(source_components[ : starting_level ])
-            
+
             path_from_link = os_path.join(starting_path, article_title)
-            
+
             lookup = models.URLPath.objects.none()
             if self.config['live_lookups'][0]:
                 if urlpath.parent:
                     lookup = urlpath.parent.get_descendants().filter(slug=article_title)
                 else:
                     lookup = urlpath.get_descendants().filter(slug=article_title)
-            
+
             if lookup.count() > 0:
                 urlpath = lookup[0]
                 path = urlpath.get_absolute_url()
             else:
                 urlpath = None
                 path = self.config['base_url'][0] + path_from_link
-            
+
         label = m.group('linkTitle')
         a = etree.Element('a')
         a.set('href', path)
@@ -116,9 +109,9 @@ class WikiPath(markdown.inlinepatterns.Pattern):
         else:
             a.set('class', self.config['html_class'][0])
         a.text = label
-            
+
         return a
-        
+
     def _getMeta(self):
         """ Return meta data or config data. """
         base_url = self.config['base_url'][0]
@@ -129,9 +122,6 @@ class WikiPath(markdown.inlinepatterns.Pattern):
             if self.md.Meta.has_key('wiki_html_class'):
                 html_class = self.md.Meta['wiki_html_class'][0]
         return base_url, html_class
-
-def makeExtension(configs=None) :
-    return WikiPathExtension(configs=configs)
 
 if __name__ == "__main__":
     import doctest
