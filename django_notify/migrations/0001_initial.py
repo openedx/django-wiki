@@ -29,7 +29,6 @@ class Migration(migrations.Migration):
                 'verbose_name': 'notification',
                 'verbose_name_plural': 'notifications',
             },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='NotificationType',
@@ -43,7 +42,6 @@ class Migration(migrations.Migration):
                 'verbose_name': 'type',
                 'verbose_name_plural': 'types',
             },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Settings',
@@ -57,7 +55,6 @@ class Migration(migrations.Migration):
                 'verbose_name': 'settings',
                 'verbose_name_plural': 'settings',
             },
-            bases=(models.Model,),
         ),
         migrations.CreateModel(
             name='Subscription',
@@ -73,12 +70,10 @@ class Migration(migrations.Migration):
                 'verbose_name': 'subscription',
                 'verbose_name_plural': 'subscriptions',
             },
-            bases=(models.Model,),
         ),
         migrations.AddField(
             model_name='notification',
             name='subscription',
             field=models.ForeignKey(on_delete=django.db.models.deletion.SET_NULL, blank=True, to='django_notify.Subscription', null=True),
-            preserve_default=True,
         ),
     ]
