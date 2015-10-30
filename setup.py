@@ -42,7 +42,6 @@ setup(
         'Django>=1.4',
         'markdown',
         'django-sekizai',
-        'south',
         'django-mptt',
       ],
     classifiers=[
@@ -57,7 +56,6 @@ setup(
         'Topic :: Software Development',
         'Topic :: Software Development :: Libraries :: Application Frameworks',
     ],
-    packages=packages,
     include_package_data=True,
     package_data=package_data,
 )
