@@ -319,7 +319,22 @@ class ArticleRevision(BaseRevisionMixin, models.Model):
             # If I'm saved from Django admin, then article.current_revision is me!
             self.article.current_revision = self
             self.article.save()
-    
+
+    @classmethod
+    def retire_user(cls, user_id):
+        """
+        Delete user record as a part of GDPR Phase II
+        :param user_id (str)
+        :return: bool
+        """
+        try:
+            user = cls.user.objects.get(id=user_id)
+        except cls.user.DoesNotExist:
+            return False
+
+        num_deleted_records, _ = ArticleRevision.objects.filter(user=user).delete()
+        return num_deleted_records > 0
+
     class Meta:
         app_label = settings.APP_LABEL
         get_latest_by = 'revision_number'
