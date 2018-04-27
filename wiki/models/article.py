@@ -331,9 +331,8 @@ class ArticleRevision(BaseRevisionMixin, models.Model):
             user = cls.user.objects.get(id=user_id)
         except cls.user.DoesNotExist:
             return False
-
-        num_deleted_records, _ = ArticleRevision.objects.filter(user=user).delete()
-        return num_deleted_records > 0
+        article_revisions = ArticleRevision.objects.filter(user=user).update(ip_address='')
+        return article_revisions > 0
 
     class Meta:
         app_label = settings.APP_LABEL

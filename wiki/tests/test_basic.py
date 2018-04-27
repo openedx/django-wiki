@@ -270,3 +270,20 @@ class ArticleViewTests(ArticleTestBase):
         self.assertContains(response, 'Root Article')
         response = c.get(reverse('wiki:search'), {'q': ''})
         self.assertFalse(response.context['articles'])
+
+    def test_retire_user(self):
+        c = self.c
+        # test preview
+        response = c.post(
+            reverse(
+                'wiki:preview',
+                kwargs={
+                    'path': ''}),
+            self.example_data)  # url: '/_preview/'
+        self.assertContains(response, 'The modified text')
+        # test save and messages
+        example2 = self.example_data.copy()
+        example2['content'] = 'Something 2'
+        response = c.post(reverse('wiki:edit', kwargs={'path': ''}), example2)
+        retirement = ArticleRevision.objects.filter(user=user)
+        print(retirement.ip_address)
