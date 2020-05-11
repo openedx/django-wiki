@@ -2,6 +2,7 @@
 build
 dist
 *.egg-info
+venv/
 
 #Docs
 docs/_build
