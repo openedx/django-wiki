@@ -30,10 +30,8 @@ django-sekizai==2.0.0
     #   django-sekizai
 iniconfig==1.1.1
     # via pytest
-markdown==2.6.11
-    # via
-    #   -c requirements/constraints.txt
-    #   -r requirements/base.txt
+markdown==3.3.3
+    # via -r requirements/base.txt
 packaging==20.8
     # via
     #   -r requirements/base.txt

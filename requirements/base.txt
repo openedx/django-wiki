@@ -21,10 +21,8 @@ django==2.2.17
     #   django-classy-tags
     #   django-mptt
     #   django-sekizai
-markdown==2.6.11
-    # via
-    #   -c requirements/constraints.txt
-    #   -r requirements/base.in
+markdown==3.3.3
+    # via -r requirements/base.in
 packaging==20.8
     # via bleach
 pyparsing==2.4.7
