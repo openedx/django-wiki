@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from django import forms
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
@@ -22,7 +20,7 @@ class ArticleRevisionForm(forms.ModelForm):
         fields = '__all__'
         
     def __init__(self, *args, **kwargs):
-        super(ArticleRevisionForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         EditorClass = editors.getEditorClass()
         editor = editors.getEditor()
         self.fields['content'].widget = editor.get_admin_widget()
@@ -54,7 +52,7 @@ class ArticleForm(forms.ModelForm):
         fields = '__all__'
 
     def __init__(self, *args, **kwargs):
-        super(ArticleForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         if self.instance.pk:
             revisions = models.ArticleRevision.objects.filter(article=self.instance)
             self.fields['current_revision'].queryset = revisions
@@ -77,7 +75,7 @@ class URLPathAdmin(MPTTModelAdmin):
     
     def get_created(self, instance):
         return instance.article.created
-    get_created.short_description = _(u'created')
+    get_created.short_description = _('created')
 
 
 admin.site.register(models.URLPath, URLPathAdmin)

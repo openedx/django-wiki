@@ -1,11 +1,9 @@
-# -*- coding: utf-8 -*-
 """
 Credits to ojii, functions get_module and load are from:
 https://github.com/ojii/django-load.
 
 Thanks for the technique!
 """
-from __future__ import absolute_import, print_function
 
 from importlib import import_module
 

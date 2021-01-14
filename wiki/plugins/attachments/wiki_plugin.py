@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import
-
 from django.conf.urls import url
 from django.utils.translation import ugettext_lazy as _
 
@@ -28,13 +25,13 @@ class AttachmentPlugin(BasePlugin):
         url(r'^change/(?P<attachment_id>\d+)/revision/(?P<revision_id>\d+)/$', views.AttachmentChangeRevisionView.as_view(), name='attachments_revision_change'),
     ]
     
-    article_tab = (_(u'Attachments'), "icon-file")
+    article_tab = (_('Attachments'), "icon-file")
     article_view = views.AttachmentView().dispatch
     
     # List of notifications to construct signal handlers for. This
     # is handled inside the notifications plugin.
     notifications = [{'model': models.AttachmentRevision,
-                      'message': lambda obj: (_(u"A file was changed: %s") if not obj.deleted else _(u"A file was deleted: %s")) % obj.get_filename(),
+                      'message': lambda obj: (_("A file was changed: %s") if not obj.deleted else _("A file was deleted: %s")) % obj.get_filename(),
                       'key': ARTICLE_EDIT,
                       'created': True,
                       'get_article': lambda obj: obj.attachment.article}

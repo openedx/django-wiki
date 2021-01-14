@@ -4,17 +4,40 @@
 #
 #    make upgrade
 #
-bleach==3.1.5             # via -r requirements/base.in
-django-classy-tags==1.0.0  # via django-sekizai
-django-js-asset==1.2.2    # via django-mptt
-django-mptt==0.11.0       # via -r requirements/base.in
-django-sekizai==1.1.0     # via -r requirements/base.in
-django==2.2.14            # via -c requirements/constraints.txt, -r requirements/base.in, django-classy-tags, django-mptt, django-sekizai
-markdown==2.6.11          # via -c requirements/constraints.txt, -r requirements/base.in
-packaging==20.4           # via bleach
-pyparsing==2.4.7          # via packaging
-pytz==2020.1              # via django
-six==1.15.0               # via -r requirements/base.in, bleach, django-classy-tags, django-sekizai, packaging
-sorl-thumbnail==12.6.3    # via -r requirements/base.in
-sqlparse==0.3.1           # via django
-webencodings==0.5.1       # via bleach
+bleach==3.2.1
+    # via -r requirements/base.in
+django-classy-tags==2.0.0
+    # via django-sekizai
+django-js-asset==1.2.2
+    # via django-mptt
+django-mptt==0.11.0
+    # via -r requirements/base.in
+django-sekizai==2.0.0
+    # via -r requirements/base.in
+django==2.2.17
+    # via
+    #   -c requirements/constraints.txt
+    #   -r requirements/base.in
+    #   django-classy-tags
+    #   django-mptt
+    #   django-sekizai
+markdown==2.6.11
+    # via
+    #   -c requirements/constraints.txt
+    #   -r requirements/base.in
+packaging==20.8
+    # via bleach
+pyparsing==2.4.7
+    # via packaging
+pytz==2020.5
+    # via django
+six==1.15.0
+    # via
+    #   -r requirements/base.in
+    #   bleach
+sorl-thumbnail==12.7.0
+    # via -r requirements/base.in
+sqlparse==0.4.1
+    # via django
+webencodings==0.5.1
+    # via bleach

@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 import importlib
 import threading
 
@@ -23,7 +21,7 @@ else:
         A thread-local for storing the per-request cache.
         """
         def __init__(self):
-            super(_RequestCache, self).__init__()
+            super().__init__()
             self.data = {}
             self.request = None
 

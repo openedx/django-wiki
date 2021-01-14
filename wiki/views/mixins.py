@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from django.views.generic.base import TemplateResponseMixin
 
 from wiki.conf import settings
@@ -21,7 +19,7 @@ class ArticleMixin(TemplateResponseMixin):
                                                    articles__article__current_revision__deleted=False,
                                                    user_can_read=request.user):
                 self.children_slice.append(child)
-        return super(ArticleMixin, self).dispatch(request, *args, **kwargs)
+        return super().dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
 

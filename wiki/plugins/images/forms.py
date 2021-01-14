@@ -1,4 +1,3 @@
-from __future__ import absolute_import
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
@@ -11,21 +10,21 @@ class SidebarForm(forms.ModelForm, PluginSidebarFormMixin):
     def __init__(self, article, request, *args, **kwargs):
         self.article = article
         self.request = request
-        super(SidebarForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
     
     def get_usermessage(self):
-        return _(u"New image %s was successfully uploaded. You can use it by selecting it from the list of available images.") % self.instance.get_filename()
+        return _("New image %s was successfully uploaded. You can use it by selecting it from the list of available images.") % self.instance.get_filename()
     
     def save(self, *args, **kwargs):
         if not self.instance.id:
             image = models.Image()
             image.article = self.article
             kwargs['commit'] = False
-            revision = super(SidebarForm, self).save(*args, **kwargs)
+            revision = super().save(*args, **kwargs)
             revision.set_from_request(self.request)
             image.add_revision(self.instance, save=True)
             return revision
-        return super(SidebarForm, self).save(*args, **kwargs)
+        return super().save(*args, **kwargs)
     
     class Meta:
         model = models.ImageRevision
@@ -37,12 +36,12 @@ class RevisionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.image = kwargs.pop('image')
         self.request = kwargs.pop('request')
-        super(RevisionForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
     
     def save(self, *args, **kwargs):
         if not self.instance.id:
             kwargs['commit'] = False
-            revision = super(RevisionForm, self).save(*args, **kwargs)
+            revision = super().save(*args, **kwargs)
             revision.inherit_predecessor(self.image, skip_image_file=True)
             revision.set_from_request(self.request)
             #revision.save()
@@ -57,10 +56,10 @@ class RevisionForm(forms.ModelForm):
 
 class PurgeForm(forms.Form):
     
-    confirm = forms.BooleanField(label=_(u'Are you sure?'), required=False)
+    confirm = forms.BooleanField(label=_('Are you sure?'), required=False)
     
     def clean_confirm(self):
         confirm = self.cleaned_data['confirm']
         if not confirm:
-            raise forms.ValidationError(_(u'You are not sure enough!'))
+            raise forms.ValidationError(_('You are not sure enough!'))
         return confirm

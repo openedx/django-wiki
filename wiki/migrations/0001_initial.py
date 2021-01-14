@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import, unicode_literals
-
 import mptt.fields
 from django.conf import settings
 from django.db import migrations, models
@@ -222,7 +219,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='urlpath',
-            unique_together=set([('site', 'parent', 'slug')]),
+            unique_together={('site', 'parent', 'slug')},
         ),
         migrations.AddField(
             model_name='revisionpluginrevision',
@@ -280,7 +277,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='articlerevision',
-            unique_together=set([('article', 'revision_number')]),
+            unique_together={('article', 'revision_number')},
         ),
         migrations.AddField(
             model_name='articleplugin',
@@ -290,7 +287,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterUniqueTogether(
             name='articleforobject',
-            unique_together=set([('content_type', 'object_id')]),
+            unique_together={('content_type', 'object_id')},
         ),
         migrations.AddField(
             model_name='article',

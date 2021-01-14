@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import
-
 from importlib import import_module
 
 import six
@@ -23,7 +20,7 @@ def register(PluginClass):
     
     settings_form = getattr(PluginClass, 'settings_form', None)
     if settings_form:
-        if isinstance(settings_form, six.string_types):
+        if isinstance(settings_form, str):
             klassname = settings_form.split(".")[-1]
             modulename = ".".join(settings_form.split(".")[:-1])
             form_module = import_module(modulename)

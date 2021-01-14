@@ -1,4 +1,3 @@
-from __future__ import absolute_import
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
@@ -12,12 +11,12 @@ from wiki.core.plugins.base import PluginSettingsFormMixin
 
 class SubscriptionForm(PluginSettingsFormMixin, forms.Form):
     
-    settings_form_headline = _(u'Notifications')
+    settings_form_headline = _('Notifications')
     settings_order = 1
     settings_write_access = False
     
-    edit = forms.BooleanField(required=False, label=_(u'When this article is edited'))
-    edit_email = forms.BooleanField(required=False, label=_(u'Also receive emails about article edits'),
+    edit = forms.BooleanField(required=False, label=_('When this article is edited'))
+    edit_email = forms.BooleanField(required=False, label=_('Also receive emails about article edits'),
                                     widget=forms.CheckboxInput(attrs={'onclick': mark_safe("$('#id_edit').attr('checked', $(this).is(':checked'));")}))
     
     def __init__(self, article, request, *args, **kwargs):
@@ -36,7 +35,7 @@ class SubscriptionForm(PluginSettingsFormMixin, forms.Form):
             initial = {'edit': bool(self.edit_notifications),
                        'edit_email': bool(self.edit_notifications.filter(send_emails=True))}
         kwargs['initial'] = initial
-        super(SubscriptionForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
     
     def get_usermessage(self):
         if self.changed_data:

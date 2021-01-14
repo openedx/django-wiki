@@ -1,4 +1,3 @@
-from __future__ import absolute_import
 from wiki.decorators import json_view, get_article
 from django.views.generic.base import View
 from django.utils.decorators import method_decorator

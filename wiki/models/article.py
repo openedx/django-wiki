@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import
-
 import bleach
 from django.contrib.auth.models import Group, User
 from django.contrib.contenttypes import fields
@@ -23,27 +20,27 @@ class Article(models.Model):
     objects = managers.ArticleManager()
 
     current_revision = models.OneToOneField('ArticleRevision',
-                                            verbose_name=_(u'current revision'),
+                                            verbose_name=_('current revision'),
                                             blank=True, null=True, related_name='current_set',
-                                            help_text=_(u'The revision being displayed for this article. If you need to do a roll-back, simply change the value of this field.'), on_delete=models.CASCADE
+                                            help_text=_('The revision being displayed for this article. If you need to do a roll-back, simply change the value of this field.'), on_delete=models.CASCADE
                                             )
 
-    created = models.DateTimeField(auto_now_add=True, verbose_name=_(u'created'))
-    modified = models.DateTimeField(auto_now=True, verbose_name=_(u'modified'),
-                                    help_text=_(u'Article properties last modified'))
+    created = models.DateTimeField(auto_now_add=True, verbose_name=_('created'))
+    modified = models.DateTimeField(auto_now=True, verbose_name=_('modified'),
+                                    help_text=_('Article properties last modified'))
 
     owner = models.ForeignKey(User, verbose_name=_('owner'),
                               blank=True, null=True, related_name='owned_articles',
-                              help_text=_(u'The owner of the article, usually the creator. The owner always has both read and write access.'), on_delete=models.CASCADE)
+                              help_text=_('The owner of the article, usually the creator. The owner always has both read and write access.'), on_delete=models.CASCADE)
 
     group = models.ForeignKey(Group, verbose_name=_('group'),
                               blank=True, null=True,
-                              help_text=_(u'Like in a UNIX file system, permissions can be given to a user according to group membership. Groups are handled through the Django auth system.'), on_delete=models.CASCADE)
+                              help_text=_('Like in a UNIX file system, permissions can be given to a user according to group membership. Groups are handled through the Django auth system.'), on_delete=models.CASCADE)
 
-    group_read = models.BooleanField(default=True, verbose_name=_(u'group read access'))
-    group_write = models.BooleanField(default=True, verbose_name=_(u'group write access'))
-    other_read = models.BooleanField(default=True, verbose_name=_(u'others read access'))
-    other_write = models.BooleanField(default=True, verbose_name=_(u'others write access'))
+    group_read = models.BooleanField(default=True, verbose_name=_('group read access'))
+    group_write = models.BooleanField(default=True, verbose_name=_('group write access'))
+    other_read = models.BooleanField(default=True, verbose_name=_('others read access'))
+    other_write = models.BooleanField(default=True, verbose_name=_('others write access'))
 
     # TODO: Do not use kwargs, it can lead to dangerous situations with bad
     # permission checking patterns. Also, since there are no other keywords,
@@ -96,8 +93,7 @@ class Article(models.Model):
     def descendant_objects(self):
         """NB! This generator is expensive, so use it with care!!"""
         for obj in self.articleforobject_set.filter(is_mptt=True):
-            for descendant in obj.content_object.get_descendants():
-                yield descendant
+            yield from obj.content_object.get_descendants()
 
     def get_children(self, max_num=None, user_can_read=None, **kwargs):
         """NB! This generator is expensive, so use it with care!!"""
@@ -174,7 +170,7 @@ class Article(models.Model):
     def __unicode__(self):
         if self.current_revision:
             return self.current_revision.title
-        return _(u'Article without content (%(id)d)') % {'id': self.id}
+        return _('Article without content (%(id)d)') % {'id': self.id}
 
     class Meta:
         permissions = (
@@ -210,8 +206,8 @@ class ArticleForObject(models.Model):
     is_mptt = models.BooleanField(default=False, editable=False)
 
     class Meta:
-        verbose_name = _(u'Article for object')
-        verbose_name_plural = _(u'Articles for object')
+        verbose_name = _('Article for object')
+        verbose_name_plural = _('Articles for object')
         # Do not allow several objects
         unique_together = ('content_type', 'object_id')
 
@@ -220,7 +216,7 @@ class BaseRevisionMixin(models.Model):
     """This is an abstract model used as a mixin: Do not override any of the
     core model methods but respect the inheritor's freedom to do so itself."""
 
-    revision_number = models.IntegerField(editable=False, verbose_name=_(u'revision number'))
+    revision_number = models.IntegerField(editable=False, verbose_name=_('revision number'))
 
     user_message = models.TextField(blank=True)
     automatic_log = models.TextField(blank=True, editable=False)
@@ -246,8 +242,8 @@ class BaseRevisionMixin(models.Model):
     # NOTE! The semantics of these fields are not related to the revision itself
     # but the actual related object. If the latest revision says "deleted=True" then
     # the related object should be regarded as deleted.
-    deleted = models.BooleanField(verbose_name=_(u'deleted'), default=False)
-    locked = models.BooleanField(verbose_name=_(u'locked'), default=False)
+    deleted = models.BooleanField(verbose_name=_('deleted'), default=False)
+    locked = models.BooleanField(verbose_name=_('locked'), default=False)
 
     def set_from_request(self, request):
         if request.user.is_authenticated:
@@ -266,15 +262,15 @@ class ArticleRevision(BaseRevisionMixin, models.Model):
     copy, do NEVER create m2m relationships."""
 
     article = models.ForeignKey('Article', on_delete=models.CASCADE,
-                                verbose_name=_(u'article'))
+                                verbose_name=_('article'))
 
     # This is where the content goes, with whatever markup language is used
-    content = models.TextField(blank=True, verbose_name=_(u'article contents'))
+    content = models.TextField(blank=True, verbose_name=_('article contents'))
 
     # This title is automatically set from either the article's title or
     # the last used revision...
-    title = models.CharField(max_length=512, verbose_name=_(u'article title'),
-                             null=False, blank=False, help_text=_(u'Each revision contains a title field that must be filled out, even if the title has not changed'))
+    title = models.CharField(max_length=512, verbose_name=_('article title'),
+                             null=False, blank=False, help_text=_('Each revision contains a title field that must be filled out, even if the title has not changed'))
 
     # TODO:
     # Allow a revision to redirect to another *article*. This
@@ -316,7 +312,7 @@ class ArticleRevision(BaseRevisionMixin, models.Model):
                 self.revision_number = 1
 
         self.clean_data()
-        super(ArticleRevision, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
         if not self.article.current_revision:
             # If I'm saved from Django admin, then article.current_revision is me!

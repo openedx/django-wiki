@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from django.conf import settings as django_settings
 
 _ = lambda x: x
@@ -22,9 +20,9 @@ DAILY = 24-1 # Subtract 1, because the job finishes less than 24h before the nex
 WEEKLY = 7*24-1
 
 INTERVALS = getattr(django_settings, "NOTIFY_INTERVALS",
-                    [(INSTANTLY, _(u'instantly')),
-                     (DAILY, _(u'daily')),
-                     (WEEKLY, _(u'weekly'))])
+                    [(INSTANTLY, _('instantly')),
+                     (DAILY, _('daily')),
+                     (WEEKLY, _('weekly'))])
 
 INTERVALS_DEFAULT = INSTANTLY
 

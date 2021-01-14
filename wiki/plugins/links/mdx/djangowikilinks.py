@@ -20,7 +20,6 @@ Dependencies:
 '''
 
 
-from __future__ import absolute_import
 import markdown
 from os import path as os_path
 
@@ -43,7 +42,7 @@ class WikiPathExtension(markdown.Extension):
         }
         
         # Override defaults with user settings
-        super(WikiPathExtension, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         
     def extendMarkdown(self, md, md_globals):
         self.md = md

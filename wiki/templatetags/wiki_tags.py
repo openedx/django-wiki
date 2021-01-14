@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from django import template
 from django.conf import settings as django_settings
 from django.contrib.contenttypes.models import ContentType
