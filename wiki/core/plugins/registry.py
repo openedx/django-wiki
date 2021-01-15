@@ -1,7 +1,5 @@
 from importlib import import_module
 
-import six
-
 _cache = {}
 _settings_forms = []
 _markdown_extensions = []
@@ -17,7 +15,7 @@ def register(PluginClass):
         raise Exception("Plugin class already registered")
     plugin = PluginClass()
     _cache[PluginClass] = plugin
-    
+
     settings_form = getattr(PluginClass, 'settings_form', None)
     if settings_form:
         if isinstance(settings_form, str):
@@ -26,16 +24,16 @@ def register(PluginClass):
             form_module = import_module(modulename)
             settings_form = getattr(form_module, klassname)
         _settings_forms.append(settings_form)
-    
-    
+
+
     if getattr(PluginClass, 'article_tab', None):
         _article_tabs.append(plugin)
-    
+
     if getattr(PluginClass, 'sidebar', None):
         _sidebar.append(plugin)
 
-    _markdown_extensions.extend(getattr(PluginClass, 'markdown_extensions', []))        
-    
+    _markdown_extensions.extend(getattr(PluginClass, 'markdown_extensions', []))
+
 def get_plugins():
     """Get loaded plugins - do not call before all plugins are loaded."""
     return _cache

@@ -1,6 +1,5 @@
 from django.conf import settings as django_settings
 from django.core.exceptions import ImproperlyConfigured
-from six import string_types, text_type
 
 # TODO: Don't use wildcards
 from .article import *

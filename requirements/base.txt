@@ -30,9 +30,7 @@ pyparsing==2.4.7
 pytz==2020.5
     # via django
 six==1.15.0
-    # via
-    #   -r requirements/base.in
-    #   bleach
+    # via bleach
 sorl-thumbnail==12.7.0
     # via -r requirements/base.in
 sqlparse==0.4.1
