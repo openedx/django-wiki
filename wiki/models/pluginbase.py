@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import
-
 from django.db import models
 from django.db.models import signals
 from django.utils.translation import ugettext_lazy as _
@@ -39,7 +36,7 @@ class ArticlePlugin(models.Model):
     properties in the future..."""    
     
     article = models.ForeignKey(Article, on_delete=models.CASCADE, 
-                                verbose_name=_(u"article"))
+                                verbose_name=_("article"))
     
     deleted = models.BooleanField(default=False)
     
@@ -75,8 +72,8 @@ class ReusablePlugin(ArticlePlugin):
     # The article on which the plugin was originally created.
     # Used to apply permissions.
     ArticlePlugin.article.on_delete=models.SET_NULL
-    ArticlePlugin.article.verbose_name=_(u'original article')
-    ArticlePlugin.article.help_text=_(u'Permissions are inherited from this article')
+    ArticlePlugin.article.verbose_name=_('original article')
+    ArticlePlugin.article.help_text=_('Permissions are inherited from this article')
     ArticlePlugin.article.null = True
     ArticlePlugin.article.blank = True
     
@@ -101,7 +98,7 @@ class ReusablePlugin(ArticlePlugin):
             if articles.count() == 0:
                 self.article = articles[0]
             
-        super(ReusablePlugin, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
 
 class SimplePluginCreateError(Exception): pass
@@ -128,13 +125,13 @@ class SimplePlugin(ArticlePlugin):
     article_revision = models.ForeignKey(ArticleRevision, on_delete=models.CASCADE)
     
     def __init__(self, *args, **kwargs):
-        super(SimplePlugin, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         if not self.id and not 'article' in kwargs:
             raise SimplePluginCreateError("Keyword argument 'article' expected.")
             self.article = kwargs['article']
         
     def get_logmessage(self):
-        return _(u"A plugin was changed")
+        return _("A plugin was changed")
     
     def save(self, *args, **kwargs):
         if not self.id:
@@ -146,7 +143,7 @@ class SimplePlugin(ArticlePlugin):
             new_revision.save()
             
             self.article_revision = new_revision
-        super(SimplePlugin, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
 
 class RevisionPlugin(ArticlePlugin):
@@ -159,9 +156,9 @@ class RevisionPlugin(ArticlePlugin):
     """
     # The current revision of this plugin, if any!
     current_revision = models.OneToOneField('RevisionPluginRevision', 
-                                            verbose_name=_(u'current revision'),
+                                            verbose_name=_('current revision'),
                                             blank=True, null=True, related_name='plugin_set',
-                                            help_text=_(u'The revision being displayed for this plugin.'
+                                            help_text=_('The revision being displayed for this plugin.'
                                                          'If you need to do a roll-back, simply change the value of this field.'),
                                             on_delete=models.CASCADE
                                             )
@@ -213,7 +210,7 @@ class RevisionPluginRevision(BaseRevisionMixin, models.Model):
             except RevisionPluginRevision.DoesNotExist:
                 self.revision_number = 1
 
-        super(RevisionPluginRevision, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
         
         if not self.plugin.current_revision:
             # If I'm saved from Django admin, then plugin.current_revision is me!

@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -19,13 +17,13 @@ class Attachment(ReusablePlugin):
     objects = managers.ArticleFkManager()
 
     current_revision = models.OneToOneField('AttachmentRevision', 
-                                            verbose_name=_(u'current revision'),
+                                            verbose_name=_('current revision'),
                                             blank=True, null=True, related_name='current_set',
-                                            help_text=_(u'The revision of this attachment currently in use (on all articles using the attachment)'),
+                                            help_text=_('The revision of this attachment currently in use (on all articles using the attachment)'),
                                             on_delete=models.CASCADE
                                             )
     
-    original_filename = models.CharField(max_length=256, verbose_name=_(u'original filename'), blank=True, null=True)
+    original_filename = models.CharField(max_length=256, verbose_name=_('original filename'), blank=True, null=True)
 
     def can_write(self, **kwargs):
         user = kwargs.get('user', None)
@@ -37,8 +35,8 @@ class Attachment(ReusablePlugin):
         return self.can_write(user=user)
     
     class Meta:
-        verbose_name = _(u'attachment')
-        verbose_name_plural = _(u'attachments')
+        verbose_name = _('attachment')
+        verbose_name_plural = _('attachments')
         db_table = 'wiki_attachments_attachment'
     
     def __unicode__(self):
@@ -80,14 +78,14 @@ class AttachmentRevision(BaseRevisionMixin, models.Model):
     attachment = models.ForeignKey('Attachment', on_delete=models.CASCADE)
 
     file = models.FileField(upload_to=upload_path, #@ReservedAssignment
-                            verbose_name=_(u'file'),
+                            verbose_name=_('file'),
                             storage=settings.STORAGE_BACKEND)
         
     description = models.TextField(blank=True)
     
     class Meta:
-        verbose_name = _(u'attachment revision')
-        verbose_name_plural = _(u'attachment revisions')
+        verbose_name = _('attachment revision')
+        verbose_name_plural = _('attachment revisions')
         ordering = ('created',)
         get_latest_by = 'revision_number'
         db_table = 'wiki_attachments_attachmentrevision'
@@ -128,7 +126,7 @@ class AttachmentRevision(BaseRevisionMixin, models.Model):
             except (AttachmentRevision.DoesNotExist, Attachment.DoesNotExist):
                 self.revision_number = 1
         
-        super(AttachmentRevision, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
         
         if not self.attachment.current_revision:
             # If I'm saved from Django admin, then article.current_revision is me!

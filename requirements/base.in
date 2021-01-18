@@ -6,5 +6,4 @@ django
 django-mptt
 django-sekizai
 Markdown
-six					# Use for strings and unicode compatibility
 sorl-thumbnail     	# Required by wiki.plugins.images

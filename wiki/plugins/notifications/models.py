@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import
 from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.db.models import signals
@@ -16,7 +14,7 @@ from wiki.plugins.notifications import settings
 class ArticleSubscription(ArticlePlugin, Subscription):
     
     def __unicode__(self):
-        return (_(u"%(user)s subscribing to %(article)s (%(type)s)") % 
+        return (_("%(user)s subscribing to %(article)s (%(type)s)") % 
                 {'user': self.settings.user.username,
                  'article': self.article.current_revision.title,
                  'type': self.notification_type.label})
@@ -39,13 +37,13 @@ def post_article_revision_save(instance, **kwargs):
     if kwargs.get('created', False):
         url = default_url(instance.article)
         if instance.deleted:
-            notify(_(u'Article deleted: %s') % instance.title, ARTICLE_EDIT,
+            notify(_('Article deleted: %s') % instance.title, ARTICLE_EDIT,
                    target_object=instance.article, url=url)
         elif instance.previous_revision:
-            notify(_(u'Article modified: %s') % instance.title, ARTICLE_EDIT,
+            notify(_('Article modified: %s') % instance.title, ARTICLE_EDIT,
                    target_object=instance.article, url=url)
         else:
-            notify(_(u'New article created: %s') % instance.title, ARTICLE_EDIT,
+            notify(_('New article created: %s') % instance.title, ARTICLE_EDIT,
                    target_object=instance, url=url)
 
 

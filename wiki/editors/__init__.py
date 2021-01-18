@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from django.urls import get_callable
 
 from wiki.conf import settings

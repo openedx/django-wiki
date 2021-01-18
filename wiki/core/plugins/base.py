@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -13,7 +11,7 @@ Please have a look in wiki.models.pluginbase to see where to inherit your
 plugin's models.
 """
 
-class BasePlugin(object):
+class BasePlugin:
     """Plugins should inherit from this"""
     # Must fill in!
     slug = None
@@ -38,13 +36,13 @@ class BasePlugin(object):
         js = []
         css = {}
 
-class PluginSidebarFormMixin(object):
+class PluginSidebarFormMixin:
 
     def get_usermessage(self):
         pass
 
-class PluginSettingsFormMixin(object):    
-    settings_form_headline = _(u'Settings for plugin')
+class PluginSettingsFormMixin:    
+    settings_form_headline = _('Settings for plugin')
     settings_order = 1
     settings_write_access = False
     

@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 import re
 
 import markdown
@@ -32,9 +30,9 @@ class AttachmentPreprocessor(markdown.preprocessors.Preprocessor):
                                                                id=attachment_id, current_revision__deleted=False)
                     url = reverse('wiki:attachments_download', kwargs={'article_id': self.markdown.article.id,
                                                                        'attachment_id':attachment.id,})
-                    line = line.replace(m.group(1), u"""<span class="attachment"><a href="%s" title="%s">%s</a>""" % 
-                                        (url, _(u"Click to download file"), attachment.original_filename))
+                    line = line.replace(m.group(1), """<span class="attachment"><a href="%s" title="%s">%s</a>""" % 
+                                        (url, _("Click to download file"), attachment.original_filename))
                 except models.Attachment.DoesNotExist:
-                    line = line.replace(m.group(1), u"""<span class="attachment attachment-deleted">Attachment with ID #%s is deleted.</span>""" % attachment_id)                    
+                    line = line.replace(m.group(1), """<span class="attachment attachment-deleted">Attachment with ID #%s is deleted.</span>""" % attachment_id)                    
             new_text.append(line)
         return new_text

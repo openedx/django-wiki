@@ -12,6 +12,3 @@
 
 # Use latest Django LTS version
 Django<2.3.0
-
-# Use version 2.6 to avoid markdown errors
-Markdown<2.7

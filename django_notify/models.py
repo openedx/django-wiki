@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import
-
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
@@ -15,9 +12,9 @@ class NotificationType(models.Model):
     """
     Notification types are added on-the-fly by the
     applications adding new notifications"""
-    key = models.CharField(max_length=128, primary_key=True, verbose_name=_(u'unique key'),
+    key = models.CharField(max_length=128, primary_key=True, verbose_name=_('unique key'),
                            unique=True)
-    label = models.CharField(max_length=128, verbose_name=_(u'verbose name'),
+    label = models.CharField(max_length=128, verbose_name=_('verbose name'),
                              blank=True, null=True)
     content_type = models.ForeignKey(ContentType, blank=True, null=True, on_delete=models.CASCADE)
     
@@ -27,23 +24,23 @@ class NotificationType(models.Model):
     class Meta:
         app_label = 'django_notify'
         db_table = settings.DB_TABLE_PREFIX + '_notificationtype'
-        verbose_name = _(u'type')
-        verbose_name_plural = _(u'types')
+        verbose_name = _('type')
+        verbose_name_plural = _('types')
     
 class Settings(models.Model):
     
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    interval = models.SmallIntegerField(choices=settings.INTERVALS, verbose_name=_(u'interval'),
+    interval = models.SmallIntegerField(choices=settings.INTERVALS, verbose_name=_('interval'),
                                         default=settings.INTERVALS_DEFAULT)
     
     def __unicode__(self):
-        return _(u"Settings for %s") % self.user.username
+        return _("Settings for %s") % self.user.username
     
     class Meta:
         app_label = 'django_notify'
         db_table = settings.DB_TABLE_PREFIX + '_settings'
-        verbose_name = _(u'settings')
-        verbose_name_plural = _(u'settings')
+        verbose_name = _('settings')
+        verbose_name_plural = _('settings')
 
 class Subscription(models.Model):
     
@@ -51,7 +48,7 @@ class Subscription(models.Model):
     settings = models.ForeignKey(Settings, on_delete=models.CASCADE)
     notification_type = models.ForeignKey(NotificationType, on_delete=models.CASCADE)
     object_id = models.CharField(max_length=64, null=True, blank=True, 
-                                 help_text=_(u'Leave this blank to subscribe to any kind of object'))
+                                 help_text=_('Leave this blank to subscribe to any kind of object'))
     send_emails = models.BooleanField(default=True)
 
     def __unicode__(self):
@@ -60,14 +57,14 @@ class Subscription(models.Model):
     class Meta:
         app_label = 'django_notify'
         db_table = settings.DB_TABLE_PREFIX + '_subscription'
-        verbose_name = _(u'subscription')
-        verbose_name_plural = _(u'subscriptions')
+        verbose_name = _('subscription')
+        verbose_name_plural = _('subscriptions')
 
 class Notification(models.Model):
     
     subscription = models.ForeignKey(Subscription, null=True, blank=True, on_delete=models.SET_NULL)
     message = models.TextField()
-    url = models.URLField(blank=True, null=True, verbose_name=_(u'link for notification'))
+    url = models.URLField(blank=True, null=True, verbose_name=_('link for notification'))
     is_viewed = models.BooleanField(default=False)
     is_emailed = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
@@ -106,8 +103,8 @@ class Notification(models.Model):
     class Meta:
         app_label = 'django_notify'
         db_table = settings.DB_TABLE_PREFIX + '_notification'
-        verbose_name = _(u'notification')
-        verbose_name_plural = _(u'notifications')
+        verbose_name = _('notification')
+        verbose_name_plural = _('notifications')
 
 
 def notify(message, key, target_object=None, url=None):
@@ -133,7 +130,7 @@ def notify(message, key, target_object=None, url=None):
 
     if target_object:
         if not isinstance(target_object, Model):
-            raise TypeError(_(u"You supplied a target_object that's not an instance of a django Model."))
+            raise TypeError(_("You supplied a target_object that's not an instance of a django Model."))
         object_id = target_object.id
     else:
         object_id = None

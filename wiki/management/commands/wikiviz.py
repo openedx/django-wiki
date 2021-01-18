@@ -43,7 +43,6 @@ options:
     -e, --inheritance
     show inheritance arrows.
 """
-from __future__ import absolute_import, print_function
 
 import os
 import sys
@@ -205,7 +204,7 @@ digraph name {
 
                 t = type(field).__name__
                 if isinstance(field, (OneToOneField, ForeignKey)):
-                    t += " ({0})".format(field.rel.field_name)
+                    t += f" ({field.rel.field_name})"
                 # TODO: ManyToManyField, GenericRelation
 
                 model['fields'].append({

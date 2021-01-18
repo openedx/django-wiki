@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from markdown.extensions import Extension
 
 from wiki.core.processors import AnchorTagProcessor

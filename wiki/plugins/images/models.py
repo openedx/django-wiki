@@ -1,4 +1,3 @@
-from __future__ import absolute_import
 from django.conf import settings as django_settings
 from django.core.exceptions import ImproperlyConfigured
 from django.db import models
@@ -41,12 +40,12 @@ class Image(RevisionPlugin):
         return self.can_write(user=user)
 
     class Meta:
-        verbose_name = _(u'image')
-        verbose_name_plural = _(u'images')
+        verbose_name = _('image')
+        verbose_name_plural = _('images')
         db_table = 'wiki_images_image'
     
     def __unicode__(self):
-        title = (_(u'Image: %s') % self.current_revision.imagerevision.get_filename()) if self.current_revision else _(u'Current revision not set!!')
+        title = (_('Image: %s') % self.current_revision.imagerevision.get_filename()) if self.current_revision else _('Current revision not set!!')
         return title
 
 
@@ -90,14 +89,14 @@ class ImageRevision(RevisionPluginRevision):
                 self.image = predecessor.image
                 self.width = predecessor.width
                 self.height = predecessor.height
-            except IOError:
+            except OSError:
                 self.image = None
 
     class Meta:
-        verbose_name = _(u'image revision')
-        verbose_name_plural = _(u'image revisions')
+        verbose_name = _('image revision')
+        verbose_name_plural = _('image revisions')
         db_table = 'wiki_images_imagerevision'
         ordering = ('-created',)
 
     def __unicode__(self):
-        return _(u'Image Revsion: %d') % self.revision_number
+        return _('Image Revsion: %d') % self.revision_number

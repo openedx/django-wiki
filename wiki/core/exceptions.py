@@ -1,4 +1,3 @@
-
 # If no root URL is found, we raise this...
 class NoRootURL(Exception):
     pass

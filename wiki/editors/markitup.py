@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from django import forms
 from django.forms.utils import flatatt
 from django.utils.encoding import force_text
@@ -18,12 +16,12 @@ class MarkItUpAdminWidget(BuildAttrsCompat, forms.Widget):
                          'rows': '10', 'cols': '40',}
         if attrs:
             default_attrs.update(attrs)
-        super(MarkItUpAdminWidget, self).__init__(default_attrs)
+        super().__init__(default_attrs)
     
     def render(self, name, value, attrs=None):
         if value is None: value = ''
         final_attrs = self.build_attrs_compat(attrs, name=name)
-        return mark_safe(u'<textarea%s>%s</textarea>' % (flatatt(final_attrs),
+        return mark_safe('<textarea%s>%s</textarea>' % (flatatt(final_attrs),
                 conditional_escape(force_text(value))))
 
 
@@ -34,12 +32,12 @@ class MarkItUpWidget(BuildAttrsCompat, forms.Widget):
                          'rows': '10', 'cols': '40',}
         if attrs:
             default_attrs.update(attrs)
-        super(MarkItUpWidget, self).__init__(default_attrs)
+        super().__init__(default_attrs)
     
     def render(self, name, value, attrs=None, renderer=None):
         if value is None: value = ''
         final_attrs = self.build_attrs_compat(attrs, name=name)
-        return mark_safe(u'<div><textarea%s>%s</textarea></div>' % (flatatt(final_attrs),
+        return mark_safe('<div><textarea%s>%s</textarea></div>' % (flatatt(final_attrs),
                 conditional_escape(force_text(value))))
 
 class MarkItUp(BaseEditor):

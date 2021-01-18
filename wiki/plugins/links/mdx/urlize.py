@@ -39,7 +39,6 @@ u'<p>del.icio.us</p>'
 
 """
 
-from __future__ import absolute_import
 import markdown
 import re
 
@@ -59,8 +58,8 @@ URLIZE_RE = (
 class UrlizePattern(markdown.inlinepatterns.Pattern):
 
     def __init__(self, pattern, markdown_instance=None):
-        markdown.inlinepatterns.Pattern.__init__(self, pattern, markdown_instance=markdown_instance)
-        self.compiled_re = re.compile("^(.*?)%s(.*?)$" % pattern, 
+        markdown.inlinepatterns.Pattern.__init__(self, pattern, md=markdown_instance)
+        self.compiled_re = re.compile("^(.*?)%s(.*?)$" % pattern,
                                       re.DOTALL | re.UNICODE | re.IGNORECASE)
 
     """ Return a link Element given an autolink (`http://example/com`). """
@@ -69,18 +68,18 @@ class UrlizePattern(markdown.inlinepatterns.Pattern):
 
         if url.startswith('<'):
             url = url[1:-1]
-            
+
         text = url
-        
+
         if not url.split('://')[0] in ('http','https','ftp'):
             if '@' in url and not '/' in url:
                 url = 'mailto:' + url
             else:
                 url = 'http://' + url
-        
+
         icon = markdown.util.etree.Element("span")
         icon.set('class', 'icon-globe')
-        
+
         span_text = markdown.util.etree.Element("span")
         span_text.text = markdown.util.AtomicString(" " + text)
         el = markdown.util.etree.Element("a")

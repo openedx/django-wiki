@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import
-
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
@@ -9,8 +6,8 @@ from wiki.plugins.attachments import models
 
 class AttachmentForm(forms.ModelForm):
     
-    description = forms.CharField(label=_(u'Description'),
-                                  help_text=_(u'A short summary of what the file contains'),
+    description = forms.CharField(label=_('Description'),
+                                  help_text=_('A short summary of what the file contains'),
                                   required=False)
     
     class Meta:
@@ -19,12 +16,12 @@ class AttachmentForm(forms.ModelForm):
 
 class DeleteForm(forms.Form):
     """This form is both used for dereferencing and deleting attachments"""
-    confirm = forms.BooleanField(label=_(u'Yes I am sure...'),
+    confirm = forms.BooleanField(label=_('Yes I am sure...'),
                                  required=False)
     
     def clean_confirm(self):
         if not self.cleaned_data['confirm']:
-            raise forms.ValidationError(_(u'You are not sure enough!'))
+            raise forms.ValidationError(_('You are not sure enough!'))
         return True
 
 class SearchForm(forms.Form):

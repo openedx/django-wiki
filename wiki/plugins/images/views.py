@@ -1,4 +1,3 @@
-from __future__ import absolute_import
 from django.contrib import messages
 from django.urls import reverse
 from django.shortcuts import get_object_or_404, redirect
@@ -24,7 +23,7 @@ class ImageView(ArticleMixin, ListView):
     
     @method_decorator(get_article(can_read=True, not_locked=True))
     def dispatch(self, request, article, *args, **kwargs):
-        return super(ImageView, self).dispatch(request, article, *args, **kwargs)
+        return super().dispatch(request, article, *args, **kwargs)
     
     def get_queryset(self):
         if (self.article.can_moderate(self.request.user) or
@@ -140,7 +139,7 @@ class RevisionAddView(ArticleMixin, FormView):
         return ArticleMixin.dispatch(self, request, article, *args, **kwargs)
     
     def get_form_kwargs(self, **kwargs):
-        kwargs = super(RevisionAddView, self).get_form_kwargs(**kwargs)
+        kwargs = super().get_form_kwargs(**kwargs)
         kwargs['image'] = self.image
         kwargs['request'] = self.request
         return kwargs
@@ -150,7 +149,7 @@ class RevisionAddView(ArticleMixin, FormView):
         # with the form instance
         if 'form' not in kwargs:
             kwargs['form'] = self.get_form()
-        kwargs = super(RevisionAddView, self).get_context_data(**kwargs)
+        kwargs = super().get_context_data(**kwargs)
         kwargs['image'] = self.image
         return kwargs
     

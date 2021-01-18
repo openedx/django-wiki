@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-from __future__ import absolute_import
-
 import os
 
 from setuptools import find_packages, setup
@@ -55,17 +52,17 @@ template_patterns = (
 
 packages = find_packages()
 
-package_data = dict(
-    (package_name, template_patterns)
+package_data = {
+    package_name: template_patterns
     for package_name in packages
-)
+}
 
 setup(
     name="django-wiki",
-    version="0.1.1",
+    version="1.0.0",
     author="Benjamin Bach",
     author_email="benjamin@overtag.dk",
-    description=("A wiki system written for the Django framework."),
+    description="A wiki system written for the Django framework.",
     license="GPLv3",
     keywords="django wiki markdown",
     packages=find_packages(exclude=["testproject", "testproject.*"]),
@@ -80,10 +77,11 @@ setup(
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.8',
         'Framework :: Django',
         'Framework :: Django :: 2.2',
+        'Framework :: Django :: 3.0',
+        'Framework :: Django :: 3.1',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Software Development',
         'Topic :: Software Development :: Libraries :: Application Frameworks',

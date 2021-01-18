@@ -1,4 +1,3 @@
-from __future__ import absolute_import
 from django.contrib import admin
 from django import forms
 from wiki.plugins.images import models
@@ -11,7 +10,7 @@ class ImageForm(forms.ModelForm):
         fields = '__all__'
 
     def __init__(self, *args, **kwargs):
-        super(ImageForm, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         if self.instance.pk:
             revisions = models.ImageRevision.objects.filter(plugin=self.instance)
             self.fields['current_revision'].queryset = revisions
