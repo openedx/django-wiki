@@ -1,3 +1,4 @@
+import bleach
 from django.conf import settings as django_settings
 from django.urls import reverse_lazy
 
@@ -12,6 +13,77 @@ WIKI_LANGUAGE = 'markdown'
 EDITOR = getattr(django_settings, 'WIKI_EDITOR', 'wiki.editors.markitup.MarkItUp')
 
 MARKDOWN_EXTENSIONS = getattr(django_settings, 'WIKI_MARKDOWN_EXTENSIONS', ['extra', 'toc'])
+
+########################
+## HTML sanitization code copied from the upstream repo
+########################
+
+#: Whether to use Bleach or not. It's not recommended to turn this off unless
+#: you know what you're doing and you don't want to use the other options.
+MARKDOWN_SANITIZE_HTML = getattr(django_settings, "WIKI_MARKDOWN_SANITIZE_HTML", True)
+
+_default_tag_whitelists = (
+    bleach.ALLOWED_TAGS
+    + [
+        "figure",
+        "figcaption",
+        "br",
+        "hr",
+        "p",
+        "div",
+        "img",
+        "pre",
+        "span",
+        "sup",
+        "table",
+        "thead",
+        "tbody",
+        "th",
+        "tr",
+        "td",
+        "dl",
+        "dt",
+        "dd",
+    ]
+    + ["h{}".format(n) for n in range(1, 7)]
+)
+
+
+#: List of allowed tags in Markdown article contents.
+MARKDOWN_HTML_WHITELIST = _default_tag_whitelists
+MARKDOWN_HTML_WHITELIST += getattr(django_settings, "WIKI_MARKDOWN_HTML_WHITELIST", [])
+
+_default_attribute_whitelist = bleach.ALLOWED_ATTRIBUTES
+for tag in MARKDOWN_HTML_WHITELIST:
+    if tag not in _default_attribute_whitelist:
+        _default_attribute_whitelist[tag] = []
+    _default_attribute_whitelist[tag].append("class")
+    _default_attribute_whitelist[tag].append("id")
+    _default_attribute_whitelist[tag].append("target")
+    _default_attribute_whitelist[tag].append("rel")
+
+_default_attribute_whitelist["img"].append("src")
+_default_attribute_whitelist["img"].append("alt")
+
+#: Dictionary of allowed attributes in Markdown article contents.
+MARKDOWN_HTML_ATTRIBUTES = _default_attribute_whitelist
+MARKDOWN_HTML_ATTRIBUTES.update(
+    getattr(django_settings, "WIKI_MARKDOWN_HTML_ATTRIBUTES", {})
+)
+
+#: Allowed inline styles in Markdown article contents, default is no styles
+#: (empty list).
+MARKDOWN_HTML_STYLES = getattr(django_settings, "WIKI_MARKDOWN_HTML_STYLES", [])
+
+_project_defined_attrs = getattr(
+    django_settings, "WIKI_MARKDOWN_HTML_ATTRIBUTE_WHITELIST", False
+)
+
+# If styles are allowed but no custom attributes are defined, we allow styles
+# for all kinds of tags.
+if MARKDOWN_HTML_STYLES and not _project_defined_attrs:
+    MARKDOWN_HTML_ATTRIBUTES["*"] = "style"
+
 
 # This slug is used in URLPath if an article has been deleted. The children of the
 # URLPath of that article are moved to lost and found. They keep their permissions
