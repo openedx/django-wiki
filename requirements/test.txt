@@ -4,11 +4,11 @@
 #
 #    make upgrade
 #
-attrs==20.3.0
+attrs==21.2.0
     # via pytest
-bleach==3.2.1
+bleach==4.1.0
     # via -r requirements/base.txt
-coverage==5.3.1
+coverage==5.5
     # via pytest-cov
 django-classy-tags==2.0.0
     # via
@@ -18,7 +18,7 @@ django-js-asset==1.2.2
     # via
     #   -r requirements/base.txt
     #   django-mptt
-django-mptt==0.11.0
+django-mptt==0.13.2
     # via -r requirements/base.txt
 django-sekizai==2.0.0
     # via -r requirements/base.txt
@@ -26,18 +26,17 @@ django-sekizai==2.0.0
     #   -c requirements/constraints.txt
     #   -r requirements/base.txt
     #   django-classy-tags
-    #   django-mptt
     #   django-sekizai
 iniconfig==1.1.1
     # via pytest
-markdown==3.3.3
+markdown==3.3.4
     # via -r requirements/base.txt
-packaging==20.8
+packaging==21.0
     # via
     #   -r requirements/base.txt
     #   bleach
     #   pytest
-pluggy==0.13.1
+pluggy==1.0.0
     # via pytest
 py==1.10.0
     # via pytest
@@ -45,20 +44,20 @@ pyparsing==2.4.7
     # via
     #   -r requirements/base.txt
     #   packaging
-pytest-cov==2.10.1
+pytest-cov==2.12.1
     # via -r requirements/test.in
-pytest-django==4.1.0
+pytest-django==4.4.0
     # via -r requirements/test.in
-pytest==6.2.1
+pytest==6.2.5
     # via
     #   -r requirements/test.in
     #   pytest-cov
     #   pytest-django
-pytz==2020.5
+pytz==2021.1
     # via
     #   -r requirements/base.txt
     #   django
-six==1.15.0
+six==1.16.0
     # via
     #   -r requirements/base.txt
     #   bleach
@@ -69,7 +68,9 @@ sqlparse==0.4.1
     #   -r requirements/base.txt
     #   django
 toml==0.10.2
-    # via pytest
+    # via
+    #   pytest
+    #   pytest-cov
 webencodings==0.5.1
     # via
     #   -r requirements/base.txt
