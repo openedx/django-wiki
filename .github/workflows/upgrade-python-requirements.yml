@@ -9,7 +9,7 @@ on:
       branch:
         description: "Target branch to create requirements PR against"
         required: true
-        default: 'master'
+        default: 'edx_release'
 
 jobs:
   upgrade_requirements:
@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: setup target branch
-        run: echo "target_branch=$(if ['${{ github.event.inputs.branch }}' = '']; then echo 'master'; else echo '${{ github.event.inputs.branch }}'; fi)" >> $GITHUB_ENV
+        run: echo "target_branch=$(if ['${{ github.event.inputs.branch }}' = '']; then echo 'edx_release'; else echo '${{ github.event.inputs.branch }}'; fi)" >> $GITHUB_ENV
 
       - uses: actions/checkout@v1
         with:
