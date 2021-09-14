@@ -23,7 +23,7 @@ django-js-asset==1.2.2
     # via
     #   -r requirements/base.txt
     #   django-mptt
-django-mptt==0.13.2
+django-mptt==0.13.3
     # via -r requirements/base.txt
 django-sekizai==2.0.0
     # via -r requirements/base.txt
@@ -63,7 +63,7 @@ six==1.16.0
     #   bleach
 sorl-thumbnail==12.7.0
     # via -r requirements/base.txt
-sqlparse==0.4.1
+sqlparse==0.4.2
     # via
     #   -r requirements/base.txt
     #   django
