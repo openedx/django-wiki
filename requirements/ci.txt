@@ -46,9 +46,9 @@ toml==0.10.2
     # via
     #   -r requirements/tox.txt
     #   tox
-tox==3.24.3
+tox==3.24.4
     # via -r requirements/tox.txt
-virtualenv==20.7.2
+virtualenv==20.8.0
     # via
     #   -r requirements/tox.txt
     #   tox
