@@ -23,7 +23,7 @@ django-js-asset==1.2.2
     # via
     #   -r requirements/base.txt
     #   django-mptt
-django-mptt==0.13.3
+django-mptt==0.13.4
     # via -r requirements/base.txt
 django-sekizai==2.0.0
     # via -r requirements/base.txt
