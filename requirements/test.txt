@@ -8,7 +8,7 @@ attrs==21.2.0
     # via pytest
 bleach==4.1.0
     # via -r requirements/base.txt
-coverage[toml]==6.0
+coverage[toml]==6.0.2
     # via pytest-cov
     # via
     #   -c requirements/constraints.txt
