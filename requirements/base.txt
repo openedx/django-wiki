@@ -24,7 +24,7 @@ markdown==3.3.4
     # via -r requirements/base.in
 packaging==21.0
     # via bleach
-pyparsing==2.4.7
+pyparsing==3.0.1
     # via packaging
 pytz==2021.3
     # via django
