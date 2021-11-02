@@ -22,9 +22,9 @@ django-sekizai==2.0.0
     # via -r requirements/base.in
 markdown==3.3.4
     # via -r requirements/base.in
-packaging==21.0
+packaging==21.2
     # via bleach
-pyparsing==3.0.1
+pyparsing==2.4.7
     # via packaging
 pytz==2021.3
     # via django
