@@ -6,3 +6,4 @@ recursive-include wiki *.html *.png *.gif *js *.css *jpg *jpeg *svg *py *.txt *.
 recursive-include django_notify *.html *.png *.gif *js *.css *jpg *jpeg *svg *py *.txt *.json
 include requirements/base.in
 
+include requirements/constraints.txt
