@@ -20,11 +20,13 @@ django-mptt==0.13.4
     # via -r requirements/base.in
 django-sekizai==2.0.0
     # via -r requirements/base.in
-markdown==3.3.4
+importlib-metadata==4.8.2
+    # via markdown
+markdown==3.3.6
     # via -r requirements/base.in
-packaging==21.2
+packaging==21.3
     # via bleach
-pyparsing==2.4.7
+pyparsing==3.0.6
     # via packaging
 pytz==2021.3
     # via django
@@ -36,3 +38,5 @@ sqlparse==0.4.2
     # via django
 webencodings==0.5.1
     # via bleach
+zipp==3.6.0
+    # via importlib-metadata
