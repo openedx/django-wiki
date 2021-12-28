@@ -4,7 +4,7 @@
 #
 #    make upgrade
 #
-attrs==21.2.0
+attrs==21.3.0
     # via pytest
 bleach==4.1.0
     # via -r requirements/base.txt
