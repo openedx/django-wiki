@@ -4,7 +4,7 @@
 #
 #    make upgrade
 #
-attrs==21.3.0
+attrs==21.4.0
     # via pytest
 bleach==4.1.0
     # via -r requirements/base.txt
@@ -79,7 +79,7 @@ webencodings==0.5.1
     # via
     #   -r requirements/base.txt
     #   bleach
-zipp==3.6.0
+zipp==3.7.0
     # via
     #   -r requirements/base.txt
     #   importlib-metadata
