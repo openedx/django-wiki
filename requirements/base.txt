@@ -6,8 +6,9 @@
 #
 bleach==4.1.0
     # via -r requirements/base.in
-django==2.2.25
+django==2.2.26
     # via
+    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -c requirements/constraints.txt
     #   -r requirements/base.in
     #   django-classy-tags
@@ -38,5 +39,5 @@ sqlparse==0.4.2
     # via django
 webencodings==0.5.1
     # via bleach
-zipp==3.6.0
+zipp==3.7.0
     # via importlib-metadata
