@@ -1,11 +1,13 @@
-from django.contrib.auth.models import User
-from django.core.cache import cache
-from django.urls import reverse
-from django.test import TestCase
-from django.test.client import Client
-from wiki.models import Article, ArticleRevision, URLPath
 import pprint
 import re
+
+from django.contrib.auth.models import User
+from django.core.cache import cache
+from django.test import TestCase
+from django.test.client import Client
+from django.urls import reverse
+
+from wiki.models import Article, ArticleRevision, URLPath
 
 
 class InitialWebClientTest(TestCase):
@@ -108,6 +110,7 @@ class WebClientTest(TestCase):
                           {'confirm': 'on', 'purge': 'on', 'revision': '3'})
         message = c.cookies['messages'].value if 'messages' in c.cookies else None
         self.assertRedirects(response, reverse('wiki:get', kwargs={'path': ''}))
+        print(message)
         self.assertTrue('This article together with all its contents are now completely gone' in message)
         self.assertNotContains(self.get_by_path(''), 'Sub Article 1')
 
