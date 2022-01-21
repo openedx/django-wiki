@@ -4,9 +4,11 @@
 #
 #    make upgrade
 #
+asgiref==3.4.1
+    # via django
 bleach==4.1.0
     # via -r requirements/base.in
-django==2.2.26
+django==3.2.11
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -c requirements/constraints.txt
@@ -27,7 +29,7 @@ markdown==3.3.6
     # via -r requirements/base.in
 packaging==21.3
     # via bleach
-pyparsing==3.0.6
+pyparsing==3.0.7
     # via packaging
 pytz==2021.3
     # via django
