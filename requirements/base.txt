@@ -13,13 +13,13 @@ django==2.2.26
     #   -r requirements/base.in
     #   django-classy-tags
     #   django-sekizai
-django-classy-tags==2.0.0
+django-classy-tags==3.0.0
     # via django-sekizai
 django-js-asset==1.2.2
     # via django-mptt
 django-mptt==0.13.4
     # via -r requirements/base.in
-django-sekizai==2.0.0
+django-sekizai==3.0.0
     # via -r requirements/base.in
 importlib-metadata==4.10.1
     # via markdown
@@ -27,7 +27,7 @@ markdown==3.3.6
     # via -r requirements/base.in
 packaging==21.3
     # via bleach
-pyparsing==3.0.6
+pyparsing==3.0.7
     # via packaging
 pytz==2021.3
     # via django
