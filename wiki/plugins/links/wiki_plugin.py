@@ -1,5 +1,5 @@
-from django.conf.urls import url
-from django.utils.translation import ugettext_lazy as _
+from django.urls import include, re_path
+from django.utils.translation import gettext_lazy as _
 
 from wiki.conf import settings
 from wiki.core.plugins import registry
@@ -14,7 +14,7 @@ class LinkPlugin(BasePlugin):
     
     slug = 'links'
     urlpatterns = [
-        url(r'^json/query-urlpath/$', views.QueryUrlPath.as_view(), name='links_query_urlpath'),
+        re_path(r'^json/query-urlpath/$', views.QueryUrlPath.as_view(), name='links_query_urlpath'),
     ]
     
     sidebar = {'headline': _('Links'),

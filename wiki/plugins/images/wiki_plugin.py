@@ -1,11 +1,12 @@
-from django.conf.urls import url
-from django.utils.translation import ugettext_lazy as _
+from django.urls import include, re_path
+from django.utils.translation import gettext_lazy as _
 
 from wiki.core.plugins import registry
 from wiki.core.plugins.base import BasePlugin
 from wiki.plugins.images import views, models, settings, forms
 from wiki.plugins.notifications import ARTICLE_EDIT
 from wiki.plugins.images.markdown_extensions import ImageExtension
+
 
 class ImagePlugin(BasePlugin):
     
@@ -40,12 +41,12 @@ class ImagePlugin(BasePlugin):
         }
 
     urlpatterns = [
-        url('^$', views.ImageView.as_view(), name='images_index'),
-        url(r'^delete/(?P<image_id>\d+)/$', views.DeleteView.as_view(), name='images_delete'),
-        url(r'^restore/(?P<image_id>\d+)/$', views.DeleteView.as_view(), name='images_restore', kwargs={'restore': True}),
-        url(r'^purge/(?P<image_id>\d+)/$', views.PurgeView.as_view(), name='images_purge'),
-        url(r'^(?P<image_id>\d+)/revision/change/(?P<rev_id>\d+)/$', views.RevisionChangeView.as_view(), name='images_restore'),
-        url(r'^(?P<image_id>\d+)/revision/add/$', views.RevisionAddView.as_view(), name='images_add_revision'),
+        re_path('^$', views.ImageView.as_view(), name='images_index'),
+        re_path(r'^delete/(?P<image_id>\d+)/$', views.DeleteView.as_view(), name='images_delete'),
+        re_path(r'^restore/(?P<image_id>\d+)/$', views.DeleteView.as_view(), name='images_restore', kwargs={'restore': True}),
+        re_path(r'^purge/(?P<image_id>\d+)/$', views.PurgeView.as_view(), name='images_purge'),
+        re_path(r'^(?P<image_id>\d+)/revision/change/(?P<rev_id>\d+)/$', views.RevisionChangeView.as_view(), name='images_restore'),
+        re_path(r'^(?P<image_id>\d+)/revision/add/$', views.RevisionAddView.as_view(), name='images_add_revision'),
     ]
 
     markdown_extensions = [ImageExtension()]
