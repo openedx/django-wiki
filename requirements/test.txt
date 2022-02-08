@@ -8,7 +8,7 @@ attrs==21.4.0
     # via pytest
 bleach==4.1.0
     # via -r requirements/base.txt
-coverage[toml]==6.3
+coverage[toml]==6.3.1
     # via pytest-cov
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
@@ -16,7 +16,7 @@ coverage[toml]==6.3
     #   -r requirements/base.txt
     #   django-classy-tags
     #   django-sekizai
-django-classy-tags==3.0.0
+django-classy-tags==3.0.1
     # via
     #   -r requirements/base.txt
     #   django-sekizai
@@ -26,7 +26,7 @@ django-js-asset==1.2.2
     #   django-mptt
 django-mptt==0.13.4
     # via -r requirements/base.txt
-django-sekizai==3.0.0
+django-sekizai==3.0.1
     # via -r requirements/base.txt
 importlib-metadata==4.10.1
     # via
@@ -49,7 +49,7 @@ pyparsing==3.0.7
     # via
     #   -r requirements/base.txt
     #   packaging
-pytest==6.2.5
+pytest==7.0.0
     # via
     #   -r requirements/test.in
     #   pytest-cov
@@ -72,10 +72,8 @@ sqlparse==0.4.2
     # via
     #   -r requirements/base.txt
     #   django
-toml==0.10.2
-    # via pytest
 tomli==2.0.0
-    # via coverage
+    # via pytest
 webencodings==0.5.1
     # via
     #   -r requirements/base.txt

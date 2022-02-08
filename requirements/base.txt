@@ -6,20 +6,20 @@
 #
 bleach==4.1.0
     # via -r requirements/base.in
-django==2.2.26
+django==2.2.27
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -c requirements/constraints.txt
     #   -r requirements/base.in
     #   django-classy-tags
     #   django-sekizai
-django-classy-tags==3.0.0
+django-classy-tags==3.0.1
     # via django-sekizai
 django-js-asset==1.2.2
     # via django-mptt
 django-mptt==0.13.4
     # via -r requirements/base.in
-django-sekizai==3.0.0
+django-sekizai==3.0.1
     # via -r requirements/base.in
 importlib-metadata==4.10.1
     # via markdown
