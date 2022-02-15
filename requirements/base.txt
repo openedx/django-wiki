@@ -12,16 +12,17 @@ django==2.2.27
     #   -c requirements/constraints.txt
     #   -r requirements/base.in
     #   django-classy-tags
+    #   django-js-asset
     #   django-sekizai
 django-classy-tags==3.0.1
     # via django-sekizai
-django-js-asset==1.2.2
+django-js-asset==2.0.0
     # via django-mptt
 django-mptt==0.13.4
     # via -r requirements/base.in
 django-sekizai==3.0.1
     # via -r requirements/base.in
-importlib-metadata==4.10.1
+importlib-metadata==4.11.0
     # via markdown
 markdown==3.3.6
     # via -r requirements/base.in
@@ -33,7 +34,7 @@ pytz==2021.3
     # via django
 six==1.16.0
     # via bleach
-sorl-thumbnail==12.7.0
+sorl-thumbnail==12.8.0
     # via -r requirements/base.in
 sqlparse==0.4.2
     # via django
