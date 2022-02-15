@@ -15,12 +15,13 @@ coverage[toml]==6.3.1
     #   -c requirements/constraints.txt
     #   -r requirements/base.txt
     #   django-classy-tags
+    #   django-js-asset
     #   django-sekizai
 django-classy-tags==3.0.1
     # via
     #   -r requirements/base.txt
     #   django-sekizai
-django-js-asset==1.2.2
+django-js-asset==2.0.0
     # via
     #   -r requirements/base.txt
     #   django-mptt
@@ -28,7 +29,7 @@ django-mptt==0.13.4
     # via -r requirements/base.txt
 django-sekizai==3.0.1
     # via -r requirements/base.txt
-importlib-metadata==4.10.1
+importlib-metadata==4.11.0
     # via
     #   -r requirements/base.txt
     #   markdown
@@ -49,7 +50,7 @@ pyparsing==3.0.7
     # via
     #   -r requirements/base.txt
     #   packaging
-pytest==7.0.0
+pytest==7.0.1
     # via
     #   -r requirements/test.in
     #   pytest-cov
@@ -66,13 +67,13 @@ six==1.16.0
     # via
     #   -r requirements/base.txt
     #   bleach
-sorl-thumbnail==12.7.0
+sorl-thumbnail==12.8.0
     # via -r requirements/base.txt
 sqlparse==0.4.2
     # via
     #   -r requirements/base.txt
     #   django
-tomli==2.0.0
+tomli==2.0.1
     # via pytest
 webencodings==0.5.1
     # via
