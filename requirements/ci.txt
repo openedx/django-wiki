@@ -8,7 +8,7 @@ distlib==0.3.4
     # via
     #   -r requirements/tox.txt
     #   virtualenv
-filelock==3.4.2
+filelock==3.6.0
     # via
     #   -r requirements/tox.txt
     #   tox
@@ -17,7 +17,7 @@ packaging==21.3
     # via
     #   -r requirements/tox.txt
     #   tox
-platformdirs==2.5.0
+platformdirs==2.5.1
     # via
     #   -r requirements/tox.txt
     #   virtualenv
