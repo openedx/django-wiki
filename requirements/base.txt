@@ -22,7 +22,7 @@ django-mptt==0.13.4
     # via -r requirements/base.in
 django-sekizai==3.0.1
     # via -r requirements/base.in
-importlib-metadata==4.11.0
+importlib-metadata==4.11.1
     # via markdown
 markdown==3.3.6
     # via -r requirements/base.in

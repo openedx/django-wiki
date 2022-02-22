@@ -8,7 +8,7 @@ attrs==21.4.0
     # via pytest
 bleach==4.1.0
     # via -r requirements/base.txt
-coverage[toml]==6.3.1
+coverage[toml]==6.3.2
     # via pytest-cov
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
@@ -29,7 +29,7 @@ django-mptt==0.13.4
     # via -r requirements/base.txt
 django-sekizai==3.0.1
     # via -r requirements/base.txt
-importlib-metadata==4.11.0
+importlib-metadata==4.11.1
     # via
     #   -r requirements/base.txt
     #   markdown
