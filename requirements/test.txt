@@ -79,7 +79,7 @@ webencodings==0.5.1
     # via
     #   -r requirements/base.txt
     #   bleach
-zipp==3.7.0
+zipp==3.8.0
     # via
     #   -r requirements/base.txt
     #   importlib-metadata
