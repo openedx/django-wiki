@@ -40,5 +40,5 @@ sqlparse==0.4.2
     # via django
 webencodings==0.5.1
     # via bleach
-zipp==3.7.0
+zipp==3.8.0
     # via importlib-metadata
