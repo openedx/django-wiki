@@ -6,8 +6,10 @@
 #
 attrs==21.4.0
     # via pytest
-bleach==5.0.0
-    # via -r requirements/base.txt
+bleach==4.1.0
+    # via
+    #   -c requirements/constraints.txt
+    #   -r requirements/base.txt
 coverage[toml]==6.3.2
     # via pytest-cov
     # via
@@ -38,13 +40,18 @@ iniconfig==1.1.1
 markdown==3.3.6
     # via -r requirements/base.txt
 packaging==21.3
-    # via pytest
+    # via
+    #   -r requirements/base.txt
+    #   bleach
+    #   pytest
 pluggy==1.0.0
     # via pytest
 py==1.11.0
     # via pytest
 pyparsing==3.0.8
-    # via packaging
+    # via
+    #   -r requirements/base.txt
+    #   packaging
 pytest==7.1.1
     # via
     #   -r requirements/test.in
@@ -69,9 +76,7 @@ sqlparse==0.4.2
     #   -r requirements/base.txt
     #   django
 tomli==2.0.1
-    # via
-    #   coverage
-    #   pytest
+    # via pytest
 webencodings==0.5.1
     # via
     #   -r requirements/base.txt
