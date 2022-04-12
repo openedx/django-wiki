@@ -29,7 +29,7 @@ py==1.11.0
     # via
     #   -r requirements/tox.txt
     #   tox
-pyparsing==3.0.7
+pyparsing==3.0.8
     # via
     #   -r requirements/tox.txt
     #   packaging
@@ -42,9 +42,9 @@ toml==0.10.2
     # via
     #   -r requirements/tox.txt
     #   tox
-tox==3.24.5
+tox==3.25.0
     # via -r requirements/tox.txt
-virtualenv==20.14.0
+virtualenv==20.14.1
     # via
     #   -r requirements/tox.txt
     #   tox
