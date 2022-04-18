@@ -1,7 +1,7 @@
 # Core requirements for using this package
 -c constraints.txt
 
-bleach				# Use for sanitizing HTML content in wiki articles
+bleach[css]			# Use for sanitizing HTML content in wiki articles
 django
 django-mptt
 django-sekizai
