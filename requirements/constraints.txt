@@ -14,8 +14,3 @@
 -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
 
 Django<2.3.0
-
-# bleach==5.0.0 contains breaking changes related to clean() function used to sanitize css
-# Code needs to be refactored to fix the test failures with the new version.
-# Will be done in https://openedx.atlassian.net/browse/BOM-3374
-bleach<5.0.0
