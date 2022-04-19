@@ -4,12 +4,13 @@
 #
 #    make upgrade
 #
+asgiref==3.5.0
+    # via django
 bleach[css]==5.0.0
     # via -r requirements/base.in
-django==2.2.28
+django==3.2.13
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
-    #   -c requirements/constraints.txt
     #   -r requirements/base.in
     #   django-classy-tags
     #   django-js-asset

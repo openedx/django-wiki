@@ -4,6 +4,10 @@
 #
 #    make upgrade
 #
+asgiref==3.5.0
+    # via
+    #   -r requirements/base.txt
+    #   django
 attrs==21.4.0
     # via pytest
 bleach[css]==5.0.0
@@ -12,7 +16,6 @@ coverage[toml]==6.3.2
     # via pytest-cov
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
-    #   -c requirements/constraints.txt
     #   -r requirements/base.txt
     #   django-classy-tags
     #   django-js-asset
