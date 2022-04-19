@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.contrib.messages.storage.cookie import CookieStorage
 from django.core.cache import cache
 from django.urls import reverse
 from django.test import TestCase
@@ -63,10 +64,11 @@ class WebClientTest(TestCase):
         example2['content'] = 'Something 2'
         response = c.post(reverse('wiki:edit', kwargs={'path': ''}), example2)
         message = c.cookies['messages'].value if 'messages' in c.cookies else None
+        decoded_message = CookieStorage(response)._decode(message)[0].message
         self.assertRedirects(response, reverse('wiki:root'))
         response = c.get(reverse('wiki:root'))
         self.assertContains(response, 'Something 2')
-        self.assertTrue('successfully added' in message)
+        self.assertTrue('successfully added' in decoded_message)
 
     def test_redirect_create(self):
         """Test that redirects to create if the slug is unknown."""
@@ -107,8 +109,9 @@ class WebClientTest(TestCase):
         response = c.post(reverse('wiki:delete', kwargs={'path': 'SubArticle1/'}),
                           {'confirm': 'on', 'purge': 'on', 'revision': '3'})
         message = c.cookies['messages'].value if 'messages' in c.cookies else None
+        decoded_message = CookieStorage(response)._decode(message)[0].message
         self.assertRedirects(response, reverse('wiki:get', kwargs={'path': ''}))
-        self.assertTrue('This article together with all its contents are now completely gone' in message)
+        self.assertTrue('This article together with all its contents are now completely gone' in decoded_message)
         self.assertNotContains(self.get_by_path(''), 'Sub Article 1')
 
     def test_revision_conflict(self):
