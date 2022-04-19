@@ -1,6 +1,6 @@
 from django import forms
 from django.forms.utils import flatatt
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
 
@@ -22,7 +22,7 @@ class MarkItUpAdminWidget(BuildAttrsCompat, forms.Widget):
         if value is None: value = ''
         final_attrs = self.build_attrs_compat(attrs, name=name)
         return mark_safe('<textarea%s>%s</textarea>' % (flatatt(final_attrs),
-                conditional_escape(force_text(value))))
+                conditional_escape(force_str(value))))
 
 
 class MarkItUpWidget(BuildAttrsCompat, forms.Widget):
@@ -38,7 +38,7 @@ class MarkItUpWidget(BuildAttrsCompat, forms.Widget):
         if value is None: value = ''
         final_attrs = self.build_attrs_compat(attrs, name=name)
         return mark_safe('<div><textarea%s>%s</textarea></div>' % (flatatt(final_attrs),
-                conditional_escape(force_text(value))))
+                conditional_escape(force_str(value))))
 
 class MarkItUp(BaseEditor):
     editor_id = 'markitup'
