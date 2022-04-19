@@ -1,13 +1,13 @@
-from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _
 from django.db.models import signals
+from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 
-from django_notify.models import notify, Subscription
-
+from django_notify.models import Subscription, notify
 from wiki import models as wiki_models
-from wiki.models.pluginbase import ArticlePlugin
 from wiki.core.plugins import registry
-from wiki.plugins.notifications import ARTICLE_EDIT #TODO: Is this bad practice?
+from wiki.models.pluginbase import ArticlePlugin
+from wiki.plugins.notifications import \
+    ARTICLE_EDIT  # TODO: Is this bad practice?
 from wiki.plugins.notifications import settings
 
 

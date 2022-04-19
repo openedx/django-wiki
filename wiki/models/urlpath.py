@@ -8,8 +8,8 @@ from django.core.exceptions import ValidationError
 from django.db import models, transaction
 from django.db.models.signals import post_save, pre_delete
 from django.urls import reverse
-from django.utils.translation import ugettext
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext
+from django.utils.translation import gettext_lazy as _
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
@@ -133,7 +133,7 @@ class URLPath(MPTTModel):
     
     def __unicode__(self):
         path = self.path
-        return path if path else ugettext("(root)")
+        return path if path else gettext("(root)")
     
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

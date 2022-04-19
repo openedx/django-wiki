@@ -1,12 +1,10 @@
 from django.conf import settings as django_settings
 from django.core.exceptions import ImproperlyConfigured
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
-
-from wiki.plugins.images import settings
+from django.utils.translation import gettext_lazy as _
 
 from wiki.models.pluginbase import RevisionPlugin, RevisionPluginRevision
-
+from wiki.plugins.images import settings
 
 if not "sorl.thumbnail" in django_settings.INSTALLED_APPS:
     raise ImproperlyConfigured('wiki.plugins.images: needs sorl.thumbnail in INSTALLED_APPS')
@@ -14,12 +12,14 @@ if not "sorl.thumbnail" in django_settings.INSTALLED_APPS:
 
 def upload_path(instance, filename):
     from os import path
+
     # Has to match original extension filename
         
     upload_path = settings.IMAGE_PATH
     upload_path = upload_path.replace('%aid', str(instance.plugin.image.article.id))
     if settings.IMAGE_PATH_OBSCURIFY:
-        import random, hashlib
+        import hashlib
+        import random
         m=hashlib.md5(str(random.randint(0,100000000000000)))
         upload_path = path.join(upload_path, m.hexdigest())
     return path.join(upload_path, filename)

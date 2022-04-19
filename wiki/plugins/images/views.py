@@ -1,17 +1,16 @@
 from django.contrib import messages
-from django.urls import reverse
 from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse
 from django.utils.decorators import method_decorator
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 from django.views.generic.base import RedirectView
+from django.views.generic.edit import FormView
 from django.views.generic.list import ListView
 
 from wiki.conf import settings as wiki_settings
 from wiki.decorators import get_article
-from wiki.plugins.images import forms
-from wiki.plugins.images import models
+from wiki.plugins.images import forms, models
 from wiki.views.mixins import ArticleMixin
-from django.views.generic.edit import FormView
 
 
 class ImageView(ArticleMixin, ListView):

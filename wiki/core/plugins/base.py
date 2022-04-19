@@ -1,4 +1,3 @@
-from django.utils.translation import ugettext_lazy as _
 
 
 """Base classes for different plugin objects.
@@ -10,6 +9,8 @@ from django.utils.translation import ugettext_lazy as _
 Please have a look in wiki.models.pluginbase to see where to inherit your
 plugin's models.
 """
+from django.utils.translation import gettext_lazy as _
+
 
 class BasePlugin:
     """Plugins should inherit from this"""

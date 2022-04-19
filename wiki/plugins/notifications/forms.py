@@ -1,12 +1,11 @@
 from django import forms
-from django.utils.translation import ugettext_lazy as _
-
-from django_notify.models import Settings, NotificationType
 from django.contrib.contenttypes.models import ContentType
 from django.utils.safestring import mark_safe
+from django.utils.translation import gettext_lazy as _
 
-from wiki.plugins.notifications import ARTICLE_EDIT
+from django_notify.models import NotificationType, Settings
 from wiki.core.plugins.base import PluginSettingsFormMixin
+from wiki.plugins.notifications import ARTICLE_EDIT
 
 
 class SubscriptionForm(PluginSettingsFormMixin, forms.Form):
