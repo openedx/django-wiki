@@ -1,5 +1,5 @@
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from wiki import managers
 from wiki.models.article import BaseRevisionMixin
@@ -67,7 +67,8 @@ def upload_path(instance, filename):
     upload_path = settings.UPLOAD_PATH
     upload_path = upload_path.replace('%aid', str(instance.attachment.article.id))
     if settings.UPLOAD_PATH_OBSCURIFY:
-        import random, hashlib
+        import hashlib
+        import random
         m=hashlib.md5(str(random.randint(0,100000000000000)))
         upload_path = path.join(upload_path, m.hexdigest())
     return path.join(upload_path, filename + '.upload')

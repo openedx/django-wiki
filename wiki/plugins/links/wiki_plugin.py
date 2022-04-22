@@ -1,20 +1,19 @@
-from django.conf.urls import url
-from django.utils.translation import ugettext_lazy as _
+from django.urls import path, reverse_lazy
+from django.utils.translation import gettext_lazy as _
 
 from wiki.conf import settings
 from wiki.core.plugins import registry
 from wiki.core.plugins.base import BasePlugin
 from wiki.plugins.links import views
-from wiki.plugins.links.mdx.urlize import makeExtension
 from wiki.plugins.links.mdx.djangowikilinks import WikiPathExtension
-from django.urls import reverse_lazy
+from wiki.plugins.links.mdx.urlize import makeExtension
 
 
 class LinkPlugin(BasePlugin):
     
     slug = 'links'
     urlpatterns = [
-        url(r'^json/query-urlpath/$', views.QueryUrlPath.as_view(), name='links_query_urlpath'),
+        path('json/query-urlpath/', views.QueryUrlPath.as_view(), name='links_query_urlpath'),
     ]
     
     sidebar = {'headline': _('Links'),

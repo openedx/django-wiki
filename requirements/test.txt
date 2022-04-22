@@ -4,15 +4,18 @@
 #
 #    make upgrade
 #
+asgiref==3.5.0
+    # via
+    #   -r requirements/base.txt
+    #   django
 attrs==21.4.0
     # via pytest
-bleach==4.1.0
+bleach[css]==5.0.0
     # via -r requirements/base.txt
 coverage[toml]==6.3.2
     # via pytest-cov
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
-    #   -c requirements/constraints.txt
     #   -r requirements/base.txt
     #   django-classy-tags
     #   django-js-asset
@@ -38,18 +41,13 @@ iniconfig==1.1.1
 markdown==3.3.6
     # via -r requirements/base.txt
 packaging==21.3
-    # via
-    #   -r requirements/base.txt
-    #   bleach
-    #   pytest
+    # via pytest
 pluggy==1.0.0
     # via pytest
 py==1.11.0
     # via pytest
-pyparsing==3.0.7
-    # via
-    #   -r requirements/base.txt
-    #   packaging
+pyparsing==3.0.8
+    # via packaging
 pytest==7.1.1
     # via
     #   -r requirements/test.in
@@ -73,12 +71,19 @@ sqlparse==0.4.2
     # via
     #   -r requirements/base.txt
     #   django
+tinycss2==1.1.1
+    # via
+    #   -r requirements/base.txt
+    #   bleach
 tomli==2.0.1
-    # via pytest
+    # via
+    #   coverage
+    #   pytest
 webencodings==0.5.1
     # via
     #   -r requirements/base.txt
     #   bleach
+    #   tinycss2
 zipp==3.8.0
     # via
     #   -r requirements/base.txt
