@@ -25,7 +25,7 @@ django-sekizai==3.0.1
     # via -r requirements/base.in
 importlib-metadata==4.11.3
     # via markdown
-markdown==3.3.6
+markdown==3.3.7
     # via -r requirements/base.in
 pytz==2022.1
     # via django

@@ -38,7 +38,7 @@ importlib-metadata==4.11.3
     #   markdown
 iniconfig==1.1.1
     # via pytest
-markdown==3.3.6
+markdown==3.3.7
     # via -r requirements/base.txt
 packaging==21.3
     # via pytest
