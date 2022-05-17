@@ -4,7 +4,7 @@
 #
 #    make upgrade
 #
-asgiref==3.5.1
+asgiref==3.5.2
     # via django
 bleach[css]==5.0.0
     # via -r requirements/base.in
