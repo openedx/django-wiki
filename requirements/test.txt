@@ -12,7 +12,7 @@ attrs==21.4.0
     # via pytest
 bleach[css]==5.0.0
     # via -r requirements/base.txt
-coverage[toml]==6.4
+coverage[toml]==6.4.1
     # via pytest-cov
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
