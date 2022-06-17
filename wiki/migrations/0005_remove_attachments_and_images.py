@@ -26,10 +26,6 @@ class Migration(migrations.Migration):
             model_name='attachmentrevision',
             name='user',
         ),
-        migrations.RemoveField(
-            model_name='imagerevision',
-            name='revisionpluginrevision_ptr',
-        ),
         migrations.DeleteModel(
             name='Attachment',
         ),
