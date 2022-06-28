@@ -10,7 +10,7 @@ asgiref==3.5.2
     #   django
 attrs==21.4.0
     # via pytest
-bleach[css]==5.0.0
+bleach[css]==5.0.1
     # via -r requirements/base.txt
 coverage[toml]==6.4.1
     # via pytest-cov
@@ -32,7 +32,7 @@ django-mptt==0.13.4
     # via -r requirements/base.txt
 django-sekizai==3.0.1
     # via -r requirements/base.txt
-importlib-metadata==4.11.4
+importlib-metadata==4.12.0
     # via
     #   -r requirements/base.txt
     #   markdown
