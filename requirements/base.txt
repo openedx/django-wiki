@@ -8,7 +8,7 @@ asgiref==3.5.2
     # via django
 bleach[css]==5.0.1
     # via -r requirements/base.in
-django==3.2.13
+django==3.2.14
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.in
