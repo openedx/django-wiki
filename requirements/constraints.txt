@@ -10,3 +10,6 @@
 
 # Use Django LTS version pinned in common constraints
 -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
+
+# markdown==3.4.0 contains refactoring which are breaking the package itself
+markdown<3.4.0

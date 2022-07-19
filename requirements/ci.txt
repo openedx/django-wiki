@@ -4,7 +4,7 @@
 #
 #    make upgrade
 #
-distlib==0.3.4
+distlib==0.3.5
     # via
     #   -r requirements/tox.txt
     #   virtualenv

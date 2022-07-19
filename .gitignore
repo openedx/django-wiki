@@ -33,3 +33,4 @@ virtualenv
 *.swp
 
 .idea/
+.DS_Store
