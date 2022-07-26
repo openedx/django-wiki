@@ -37,14 +37,13 @@ six==1.16.0
     # via
     #   -r requirements/tox.txt
     #   tox
-    #   virtualenv
 toml==0.10.2
     # via
     #   -r requirements/tox.txt
     #   tox
 tox==3.25.1
     # via -r requirements/tox.txt
-virtualenv==20.15.1
+virtualenv==20.16.0
     # via
     #   -r requirements/tox.txt
     #   tox
