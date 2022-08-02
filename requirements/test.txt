@@ -8,7 +8,7 @@ asgiref==3.5.2
     # via
     #   -r requirements/base.txt
     #   django
-attrs==21.4.0
+attrs==22.1.0
     # via pytest
 bleach[css]==5.0.1
     # via -r requirements/base.txt
@@ -30,7 +30,7 @@ django-js-asset==2.0.0
     #   django-mptt
 django-mptt==0.13.4
     # via -r requirements/base.txt
-django-sekizai==3.0.1
+django-sekizai==4.0.0
     # via -r requirements/base.txt
 importlib-metadata==4.12.0
     # via
