@@ -8,7 +8,7 @@ distlib==0.3.5
     # via
     #   -r requirements/tox.txt
     #   virtualenv
-filelock==3.7.1
+filelock==3.8.0
     # via
     #   -r requirements/tox.txt
     #   tox
