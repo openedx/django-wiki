@@ -33,7 +33,7 @@ pytz==2022.2.1
     # via django
 six==1.16.0
     # via bleach
-sorl-thumbnail==12.8.0
+sorl-thumbnail==12.9.0
     # via -r requirements/base.in
 sqlparse==0.4.2
     # via django
