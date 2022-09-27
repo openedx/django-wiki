@@ -69,7 +69,7 @@ six==1.16.0
     #   bleach
 sorl-thumbnail==12.9.0
     # via -r requirements/base.txt
-sqlparse==0.4.2
+sqlparse==0.4.3
     # via
     #   -r requirements/base.txt
     #   django
