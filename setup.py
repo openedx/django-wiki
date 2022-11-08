@@ -62,6 +62,7 @@ setup(
     version="1.1.2",
     author="Benjamin Bach",
     author_email="benjamin@overtag.dk",
+    long_description_content_type='text/markdown',
     description="A wiki system written for the Django framework.",
     license="GPLv3",
     keywords="django wiki markdown",
@@ -71,7 +72,7 @@ setup(
     install_requires=load_requirements('requirements/base.in'),
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
-        'License :: OSI Approved :: GPLv3',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
