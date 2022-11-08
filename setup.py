@@ -59,7 +59,7 @@ package_data = {
 
 setup(
     name="django-wiki",
-    version="1.1.2",
+    version="1.1.3",
     author="Benjamin Bach",
     author_email="benjamin@overtag.dk",
     long_description_content_type='text/markdown',
