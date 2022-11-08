@@ -58,7 +58,7 @@ package_data = {
 }
 
 setup(
-    name="django-wiki",
+    name="openedx-django-wiki",
     version="1.1.3",
     author="Benjamin Bach",
     author_email="benjamin@overtag.dk",
