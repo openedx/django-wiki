@@ -59,7 +59,7 @@ package_data = {
 
 setup(
     name="openedx-django-wiki",
-    version="1.1.4",
+    version="2.0.0",
     author="Benjamin Bach",
     author_email="benjamin@overtag.dk",
     long_description_content_type='text/markdown',

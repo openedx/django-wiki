@@ -24,7 +24,7 @@ MARKDOWN_SANITIZE_HTML = getattr(django_settings, "WIKI_MARKDOWN_SANITIZE_HTML",
 
 _default_tag_whitelists = (
     bleach.ALLOWED_TAGS
-    + [
+    | {
         "figure",
         "figcaption",
         "br",
@@ -44,14 +44,14 @@ _default_tag_whitelists = (
         "dl",
         "dt",
         "dd",
-    ]
-    + ["h{}".format(n) for n in range(1, 7)]
+    }
+    | {"h{}".format(n) for n in range(1, 7)}
 )
 
 
 #: List of allowed tags in Markdown article contents.
 MARKDOWN_HTML_WHITELIST = _default_tag_whitelists
-MARKDOWN_HTML_WHITELIST += getattr(django_settings, "WIKI_MARKDOWN_HTML_WHITELIST", [])
+MARKDOWN_HTML_WHITELIST |= set(getattr(django_settings, "WIKI_MARKDOWN_HTML_WHITELIST", []))
 
 _default_attribute_whitelist = bleach.ALLOWED_ATTRIBUTES
 for tag in MARKDOWN_HTML_WHITELIST:
@@ -130,10 +130,10 @@ CAN_ADMIN = getattr(django_settings, 'WIKI_CAN_ADMIN', lambda article, user: use
 ANONYMOUS = getattr(django_settings, 'WIKI_ANONYMOUS', True)
 
 # Globally enable write access for anonymous users, if true anonymous users will be treated
-# as the others_write boolean field on models.Article. 
+# as the others_write boolean field on models.Article.
 ANONYMOUS_WRITE = getattr(django_settings, 'WIKI_ANONYMOUS_WRITE', False)
 
-# Sign up, login and logout views should be accessible 
+# Sign up, login and logout views should be accessible
 ACCOUNT_HANDLING = getattr(django_settings, 'WIKI_ACCOUNT_HANDLING', True)
 
 if ACCOUNT_HANDLING:
