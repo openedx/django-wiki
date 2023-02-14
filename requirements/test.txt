@@ -82,7 +82,7 @@ webencodings==0.5.1
     #   -r requirements/base.txt
     #   bleach
     #   tinycss2
-zipp==3.12.0
+zipp==3.13.0
     # via
     #   -r requirements/base.txt
     #   importlib-metadata
