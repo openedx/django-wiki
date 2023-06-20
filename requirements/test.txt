@@ -32,7 +32,7 @@ django-sekizai==4.1.0
     # via -r requirements/base.txt
 exceptiongroup==1.1.1
     # via pytest
-importlib-metadata==6.6.0
+importlib-metadata==6.7.0
     # via
     #   -r requirements/base.txt
     #   markdown
