@@ -73,9 +73,11 @@ class URLPathAdmin(MPTTModelAdmin):
                    'articles__article__modified')
     list_display = ('__unicode__', 'article', 'get_created')
     
+    @admin.display(
+        description=_('created')
+    )
     def get_created(self, instance):
         return instance.article.created
-    get_created.short_description = _('created')
 
 
 admin.site.register(models.URLPath, URLPathAdmin)
