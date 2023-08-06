@@ -18,15 +18,3 @@ class AttachmentsConfig(AppConfig):
     name = 'wiki.plugins.attachments'
     verbose_name = _("Wiki attachments")
     label = 'wiki_attachments'
-
-
-class HelpConfig(AppConfig):
-    name = "wiki.plugins.help"
-    verbose_name = _("Wiki help")
-    label = "wiki_help"
-
-
-class LinksConfig(AppConfig):
-    name = "wiki.plugins.links"
-    verbose_name = _("Wiki links")
-    label = "wiki_links"
