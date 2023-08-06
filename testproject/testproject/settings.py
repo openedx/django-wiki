@@ -105,9 +105,9 @@ INSTALLED_APPS = [
     'wiki',
     'wiki.plugins.help',
     'wiki.plugins.links',
-    'wiki.apps.ImagesConfig',
-    'wiki.apps.AttachmentsConfig',
-    'wiki.apps.NotifcationsConfig',
+    'wiki.plugins.images',
+    'wiki.plugins.attachments',
+    'wiki.plugins.notifications',
     'mptt',
 ]
 
