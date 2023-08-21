@@ -64,6 +64,7 @@ setup(
     author_email="benjamin@overtag.dk",
     long_description_content_type='text/markdown',
     description="A wiki system written for the Django framework.",
+    url="https://github.com/openedx/django-wiki",
     license="GPLv3",
     keywords="django wiki markdown",
     packages=find_packages(exclude=["testproject", "testproject.*"]),
