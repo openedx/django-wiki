@@ -8,21 +8,25 @@ asgiref==3.7.2
     # via
     #   -r requirements/base.txt
     #   django
-bleach[css]==6.0.0
-    # via -r requirements/base.txt
-coverage[toml]==7.2.7
-    # via pytest-cov
+bleach[css]==6.1.0
+    # via
+    #   -r requirements/base.txt
+    #   bleach
+coverage[toml]==7.3.2
+    # via
+    #   coverage
+    #   pytest-cov
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.txt
     #   django-classy-tags
     #   django-js-asset
     #   django-sekizai
-django-classy-tags==4.0.0
+django-classy-tags==4.1.0
     # via
     #   -r requirements/base.txt
     #   django-sekizai
-django-js-asset==2.0.0
+django-js-asset==2.1.0
     # via
     #   -r requirements/base.txt
     #   django-mptt
@@ -30,9 +34,9 @@ django-mptt==0.14.0
     # via -r requirements/base.txt
 django-sekizai==4.1.0
     # via -r requirements/base.txt
-exceptiongroup==1.1.1
+exceptiongroup==1.2.0
     # via pytest
-importlib-metadata==6.6.0
+importlib-metadata==6.8.0
     # via
     #   -r requirements/base.txt
     #   markdown
@@ -42,20 +46,20 @@ markdown==3.3.7
     # via
     #   -c requirements/constraints.txt
     #   -r requirements/base.txt
-packaging==23.1
+packaging==23.2
     # via pytest
-pluggy==1.0.0
+pluggy==1.3.0
     # via pytest
-pytest==7.3.2
+pytest==7.4.3
     # via
     #   -r requirements/test.in
     #   pytest-cov
     #   pytest-django
 pytest-cov==4.1.0
     # via -r requirements/test.in
-pytest-django==4.5.2
+pytest-django==4.7.0
     # via -r requirements/test.in
-pytz==2023.3
+pytz==2023.3.post1
     # via
     #   -r requirements/base.txt
     #   django
@@ -63,19 +67,21 @@ six==1.16.0
     # via
     #   -r requirements/base.txt
     #   bleach
-sorl-thumbnail==12.9.0
+sorl-thumbnail==12.10.0
     # via -r requirements/base.txt
 sqlparse==0.4.4
     # via
     #   -r requirements/base.txt
     #   django
-tinycss2==1.1.1
+tinycss2==1.2.1
     # via
     #   -r requirements/base.txt
     #   bleach
 tomli==2.0.1
-    # via pytest
-typing-extensions==4.6.3
+    # via
+    #   coverage
+    #   pytest
+typing-extensions==4.8.0
     # via
     #   -r requirements/base.txt
     #   asgiref
@@ -84,7 +90,7 @@ webencodings==0.5.1
     #   -r requirements/base.txt
     #   bleach
     #   tinycss2
-zipp==3.15.0
+zipp==3.17.0
     # via
     #   -r requirements/base.txt
     #   importlib-metadata
