@@ -13,3 +13,6 @@
 
 # markdown==3.4.0 contains refactoring which are breaking the package itself
 markdown<3.4.0
+
+# For python greater than or equal to 3.9 backports.zoneinfo causing failures
+backports.zoneinfo; python_version<'3.9'
