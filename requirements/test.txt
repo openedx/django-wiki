@@ -8,14 +8,14 @@ asgiref==3.7.2
     # via
     #   -r requirements/base.txt
     #   django
-bleach[css]==6.1.0
+backports-zoneinfo==0.2.1
     # via
     #   -r requirements/base.txt
-    #   bleach
-coverage[toml]==7.3.2
-    # via
-    #   coverage
-    #   pytest-cov
+    #   django
+bleach[css]==6.1.0
+    # via -r requirements/base.txt
+coverage[toml]==7.4.4
+    # via pytest-cov
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.txt
@@ -26,7 +26,7 @@ django-classy-tags==4.1.0
     # via
     #   -r requirements/base.txt
     #   django-sekizai
-django-js-asset==2.1.0
+django-js-asset==2.2.0
     # via
     #   -r requirements/base.txt
     #   django-mptt
@@ -36,8 +36,9 @@ django-sekizai==4.1.0
     # via -r requirements/base.txt
 exceptiongroup==1.2.0
     # via pytest
-importlib-metadata==7.0.0
+importlib-metadata==6.11.0
     # via
+    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.txt
     #   markdown
 iniconfig==2.0.0
@@ -46,23 +47,19 @@ markdown==3.3.7
     # via
     #   -c requirements/constraints.txt
     #   -r requirements/base.txt
-packaging==23.2
+packaging==24.0
     # via pytest
-pluggy==1.3.0
+pluggy==1.4.0
     # via pytest
-pytest==7.4.3
+pytest==8.1.1
     # via
     #   -r requirements/test.in
     #   pytest-cov
     #   pytest-django
 pytest-cov==4.1.0
     # via -r requirements/test.in
-pytest-django==4.7.0
+pytest-django==4.8.0
     # via -r requirements/test.in
-pytz==2023.3.post1
-    # via
-    #   -r requirements/base.txt
-    #   django
 six==1.16.0
     # via
     #   -r requirements/base.txt
@@ -81,7 +78,7 @@ tomli==2.0.1
     # via
     #   coverage
     #   pytest
-typing-extensions==4.8.0
+typing-extensions==4.10.0
     # via
     #   -r requirements/base.txt
     #   asgiref
@@ -90,7 +87,7 @@ webencodings==0.5.1
     #   -r requirements/base.txt
     #   bleach
     #   tinycss2
-zipp==3.17.0
+zipp==3.18.1
     # via
     #   -r requirements/base.txt
     #   importlib-metadata
