@@ -59,7 +59,7 @@ package_data = {
 
 setup(
     name="openedx-django-wiki",
-    version="2.0.3",
+    version="2.1.0",
     author="Benjamin Bach",
     author_email="benjamin@overtag.dk",
     long_description_content_type='text/markdown',
@@ -79,8 +79,8 @@ setup(
         'Intended Audience :: Developers',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.11',
         'Framework :: Django',
-        'Framework :: Django :: 3.2',
         'Framework :: Django :: 4.2',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
         'Topic :: Software Development',
