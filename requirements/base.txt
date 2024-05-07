@@ -4,7 +4,7 @@
 #
 #    make upgrade
 #
-asgiref==3.8.0
+asgiref==3.8.1
     # via django
 backports-zoneinfo==0.2.1 ; python_version < "3.9"
     # via
@@ -12,7 +12,7 @@ backports-zoneinfo==0.2.1 ; python_version < "3.9"
     #   django
 bleach[css]==6.1.0
     # via -r requirements/base.in
-django==4.2.11
+django==4.2.12
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.in
@@ -39,11 +39,11 @@ six==1.16.0
     # via bleach
 sorl-thumbnail==12.10.0
     # via -r requirements/base.in
-sqlparse==0.4.4
+sqlparse==0.5.0
     # via django
 tinycss2==1.2.1
     # via bleach
-typing-extensions==4.10.0
+typing-extensions==4.11.0
     # via asgiref
 webencodings==0.5.1
     # via
