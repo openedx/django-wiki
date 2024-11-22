@@ -12,35 +12,37 @@ There are three kinds of plugin base models:
   1) SimplePlugin - an object purely associated with an article. Will bump the
      article's revision history upon creation, and rolling back an article will
      make it go away (not from the database, you can roll forwards again).
-     
+
   2) RevisionPlugin - an object with its own revisions. The object will have its
      own history independent of the article. The strategy is that you will provide
      different code for the article text while including it, so it will indirectly
      affect the article history, but you have the force of rolling back this
      object independently.
-  
+
   3) ReusablePlugin - a plugin that can be used on many articles. Please note
      that the logics for keeping revisions on such plugins are complicated, so you
      have to implement that on your own. Furthermore, you need to be aware of
      the permission system!
-
-
 """
 
 
 class ArticlePlugin(models.Model):
-    """This is the mother of all plugins. Extending from it means a deletion
+    """
+    This is the mother of all plugins. Extending from it means a deletion
     of an article will CASCADE to your plugin, and the database will be kept
     clean. Furthermore, it's possible to list all plugins and maintain generic
-    properties in the future..."""    
-    
-    article = models.ForeignKey(Article, on_delete=models.CASCADE, 
+    properties in the future...
+
+    .. no_pii:
+    """
+
+    article = models.ForeignKey(Article, on_delete=models.CASCADE,
                                 verbose_name=_("article"))
-    
+
     deleted = models.BooleanField(default=False)
-    
+
     created = models.DateTimeField(auto_now_add=True)
-    
+
     # Permission methods - you should override these, if they don't fit your logic.
     def can_read(self, **kwargs):
         return self.article.can_read(**kwargs)
@@ -57,16 +59,19 @@ class ArticlePlugin(models.Model):
 
 
 class ReusablePlugin(ArticlePlugin):
-    """Extend from this model if you have a plugin that may be related to many
+    """
+    Extend from this model if you have a plugin that may be related to many
     articles. Please note that the ArticlePlugin.article ForeignKey STAYS! This
     is in order to maintain an explicit set of permissions.
-    
+
     In general, it's quite complicated to maintain plugin content that's shared
     between different articles. The best way to go is to avoid this. For inspiration,
     look at wiki.plugins.attachments
-    
+
     You might have to override the permission methods (can_read, can_write etc.)
     if you have certain needs for logic in your reusable plugin.
+
+    .. no_pii:
     """
     # The article on which the plugin was originally created.
     # Used to apply permissions.
@@ -75,9 +80,9 @@ class ReusablePlugin(ArticlePlugin):
     ArticlePlugin.article.help_text=_('Permissions are inherited from this article')
     ArticlePlugin.article.null = True
     ArticlePlugin.article.blank = True
-    
+
     articles = models.ManyToManyField(Article, related_name='shared_plugins_set')
-    
+
     # Since the article relation may be None, we have to check for this
     # before handling permissions....
     def can_read(self, **kwargs):
@@ -90,13 +95,13 @@ class ReusablePlugin(ArticlePlugin):
         return self.article.can_moderate(user) if self.article else False
 
     def save(self, *args, **kwargs):
-        
+
         # Automatically make the original article the first one in the added set
         if not self.article:
             articles = self.articles.all()
             if articles.count() == 0:
                 self.article = articles[0]
-            
+
         super().save(*args, **kwargs)
 
 
@@ -108,30 +113,32 @@ class SimplePlugin(ArticlePlugin):
     saving a new instance. This way, a new revision will be created, and
     users are able to roll back to the a previous revision (in which your
     plugin wasn't related to the article).
-    
+
     Furthermore, your plugin relation is kept when new revisions are created.
-    
+
     Usage:
-    
+
     class YourPlugin(SimplePlugin):
         ...
-    
+
     Creating new plugins instances:
     YourPlugin(article=article_instance, ...) or
     YourPlugin.objects.create(article=article_instance, ...)
+
+    .. no_pii:
     """
     # The article revision that this plugin is attached to
     article_revision = models.ForeignKey(ArticleRevision, on_delete=models.CASCADE)
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if not self.id and not 'article' in kwargs:
             raise SimplePluginCreateError("Keyword argument 'article' expected.")
             self.article = kwargs['article']
-        
+
     def get_logmessage(self):
         return _("A plugin was changed")
-    
+
     def save(self, *args, **kwargs):
         if not self.id:
             if not self.article.current_revision:
@@ -140,7 +147,7 @@ class SimplePlugin(ArticlePlugin):
             new_revision.inherit_predecessor(self.article)
             new_revision.automatic_log = self.get_logmessage()
             new_revision.save()
-            
+
             self.article_revision = new_revision
         super().save(*args, **kwargs)
 
@@ -149,25 +156,27 @@ class RevisionPlugin(ArticlePlugin):
     """
     If you want your plugin to maintain revisions, extend from this one,
     not SimplePlugin.
-    
+
     This kind of plugin is not attached to article plugins so rolling articles
     back and forth does not affect it.
+
+    .. no_pii:
     """
     # The current revision of this plugin, if any!
-    current_revision = models.OneToOneField('RevisionPluginRevision', 
+    current_revision = models.OneToOneField('RevisionPluginRevision',
                                             verbose_name=_('current revision'),
                                             blank=True, null=True, related_name='plugin_set',
                                             help_text=_('The revision being displayed for this plugin.'
                                                          'If you need to do a roll-back, simply change the value of this field.'),
                                             on_delete=models.CASCADE
                                             )
-    
+
     def add_revision(self, new_revision, save=True):
         """
         Sets the properties of a revision and ensures its the current
         revision.
         """
-        assert self.id or save, ('RevisionPluginRevision.add_revision: Sorry, you cannot add a' 
+        assert self.id or save, ('RevisionPluginRevision.add_revision: Sorry, you cannot add a'
                                  'revision to a plugin that has not been saved '
                                  'without using save=True')
         if not self.id: self.save()
@@ -188,17 +197,21 @@ class RevisionPluginRevision(BaseRevisionMixin, models.Model):
     """
     If you want your plugin to maintain revisions, make an extra model
     that extends from this one.
-    
-    (this class is very much copied from wiki.models.article.ArticleRevision
+
+    (this class is very much copied from wiki.models.article.ArticleRevision)
+
+    .. pii: This model store IP the addresses of users who have edited the object
+    .. pii_types: choice_ip
+    .. pii_retirement: local_api
     """
-    
+
     plugin = models.ForeignKey(RevisionPlugin, related_name='revision_set', on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
         if (not self.id and
-            not self.previous_revision and 
+            not self.previous_revision and
             self.plugin and
-            self.plugin.current_revision and 
+            self.plugin.current_revision and
                 self.plugin.current_revision != self):
             self.previous_revision = self.plugin.current_revision
 
@@ -210,7 +223,7 @@ class RevisionPluginRevision(BaseRevisionMixin, models.Model):
                 self.revision_number = 1
 
         super().save(*args, **kwargs)
-        
+
         if not self.plugin.current_revision:
             # If I'm saved from Django admin, then plugin.current_revision is me!
             self.plugin.current_revision = self
@@ -240,7 +253,7 @@ class RevisionPluginRevision(BaseRevisionMixin, models.Model):
 
 
 def update_simple_plugins(instance, *args, **kwargs):
-    """Every time a new article revision is created, we update all active 
+    """Every time a new article revision is created, we update all active
     plugins to match this article revision"""
     if kwargs.get('created', False):
         p_revisions = SimplePlugin.objects.filter(article=instance.article, deleted=False)

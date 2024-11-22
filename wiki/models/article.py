@@ -16,7 +16,9 @@ from wiki.core.plugins import registry as plugin_registry
 
 
 class Article(models.Model):
-
+    """
+    .. no_pii:
+    """
     objects = managers.ArticleManager()
 
     current_revision = models.OneToOneField('ArticleRevision',
@@ -192,7 +194,9 @@ class Article(models.Model):
 
 
 class ArticleForObject(models.Model):
-
+    """
+    .. no_pii:
+    """
     objects = managers.ArticleFkManager()
 
     article = models.ForeignKey('Article', on_delete=models.CASCADE)
@@ -213,8 +217,16 @@ class ArticleForObject(models.Model):
 
 
 class BaseRevisionMixin(models.Model):
-    """This is an abstract model used as a mixin: Do not override any of the
-    core model methods but respect the inheritor's freedom to do so itself."""
+    """
+    This is an abstract model used as a mixin: Do not override any of the
+    core model methods but respect the inheritor's freedom to do so itself.
+
+    Marking this as no PII here, it says it's abstract but is handled as an
+    actual model instead of an AbstractModel, probably because this code
+    predates that Django functionality.
+
+    .. no_pii: Though this model has an IP address field, it is abstract.
+    """
 
     revision_number = models.IntegerField(editable=False, verbose_name=_('revision number'))
 
@@ -258,8 +270,14 @@ class BaseRevisionMixin(models.Model):
 
 
 class ArticleRevision(BaseRevisionMixin, models.Model):
-    """This is where main revision data is stored. To make it easier to
-    copy, do NEVER create m2m relationships."""
+    """
+    This is where main revision data is stored. To make it easier to
+    copy, do NEVER create m2m relationships.
+
+    .. pii: This model store IP the addresses of users who have edited the article
+    .. pii_types: choice_ip
+    .. pii_retirement: local_api
+    """
 
     article = models.ForeignKey('Article', on_delete=models.CASCADE,
                                 verbose_name=_('article'))
