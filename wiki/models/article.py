@@ -274,7 +274,7 @@ class ArticleRevision(BaseRevisionMixin, models.Model):
     This is where main revision data is stored. To make it easier to
     copy, do NEVER create m2m relationships.
 
-    .. pii: This model store IP the addresses of users who have edited the article
+    .. pii: This model stores the IP addresses of users who have edited the article
     .. pii_types: choice_ip
     .. pii_retirement: local_api
     """

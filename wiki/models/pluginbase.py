@@ -200,7 +200,7 @@ class RevisionPluginRevision(BaseRevisionMixin, models.Model):
 
     (this class is very much copied from wiki.models.article.ArticleRevision)
 
-    .. pii: This model store IP the addresses of users who have edited the object
+    .. pii: This model stores the IP addresses of users who have edited the object
     .. pii_types: choice_ip
     .. pii_retirement: local_api
     """
