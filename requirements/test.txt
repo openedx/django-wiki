@@ -8,9 +8,9 @@ asgiref==3.8.1
     # via
     #   -r requirements/base.txt
     #   django
-bleach[css]==6.1.0
+bleach[css]==6.2.0
     # via -r requirements/base.txt
-coverage[toml]==7.6.4
+coverage[toml]==7.6.12
     # via pytest-cov
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
@@ -22,7 +22,7 @@ django-classy-tags==4.1.0
     # via
     #   -r requirements/base.txt
     #   django-sekizai
-django-js-asset==2.2.0
+django-js-asset==3.0.1
     # via
     #   -r requirements/base.txt
     #   django-mptt
@@ -36,30 +36,26 @@ markdown==3.3.7
     # via
     #   -c requirements/constraints.txt
     #   -r requirements/base.txt
-packaging==24.1
+packaging==24.2
     # via pytest
 pluggy==1.5.0
     # via pytest
-pytest==8.3.3
+pytest==8.3.4
     # via
     #   -r requirements/test.in
     #   pytest-cov
     #   pytest-django
-pytest-cov==5.0.0
+pytest-cov==6.0.0
     # via -r requirements/test.in
-pytest-django==4.9.0
+pytest-django==4.10.0
     # via -r requirements/test.in
-six==1.16.0
-    # via
-    #   -r requirements/base.txt
-    #   bleach
 sorl-thumbnail==12.11.0
     # via -r requirements/base.txt
-sqlparse==0.5.1
+sqlparse==0.5.3
     # via
     #   -r requirements/base.txt
     #   django
-tinycss2==1.2.1
+tinycss2==1.4.0
     # via
     #   -r requirements/base.txt
     #   bleach
