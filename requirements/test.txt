@@ -22,7 +22,7 @@ django-classy-tags==4.1.0
     # via
     #   -r requirements/base.txt
     #   django-sekizai
-django-js-asset==3.0.1
+django-js-asset==3.1.0
     # via
     #   -r requirements/base.txt
     #   django-mptt
@@ -40,7 +40,7 @@ packaging==24.2
     # via pytest
 pluggy==1.5.0
     # via pytest
-pytest==8.3.4
+pytest==8.3.5
     # via
     #   -r requirements/test.in
     #   pytest-cov
