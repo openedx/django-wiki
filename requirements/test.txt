@@ -10,7 +10,7 @@ asgiref==3.8.1
     #   django
 bleach[css]==6.2.0
     # via -r requirements/base.txt
-coverage[toml]==7.7.1
+coverage[toml]==7.8.0
     # via pytest-cov
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
@@ -26,7 +26,7 @@ django-js-asset==3.1.2
     # via
     #   -r requirements/base.txt
     #   django-mptt
-django-mptt==0.16.0
+django-mptt==0.17.0
     # via -r requirements/base.txt
 django-sekizai==4.1.0
     # via -r requirements/base.txt
@@ -45,9 +45,9 @@ pytest==8.3.5
     #   -r requirements/test.in
     #   pytest-cov
     #   pytest-django
-pytest-cov==6.0.0
+pytest-cov==6.1.1
     # via -r requirements/test.in
-pytest-django==4.10.0
+pytest-django==4.11.1
     # via -r requirements/test.in
 sorl-thumbnail==12.11.0
     # via -r requirements/base.txt
