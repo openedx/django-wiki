@@ -49,7 +49,7 @@ class Login(FormView):
         return FormView.post(self, request, *args, **kwargs)
     
     def get(self, request, *args, **kwargs):
-        self.referer = request.META.get('HTTP_REFERER', '')
+        self.referer = request.headers.get('referer', '')
         request.session['login_referer'] = self.referer
         return FormView.get(self, request, *args, **kwargs)
     

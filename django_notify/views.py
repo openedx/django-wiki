@@ -31,7 +31,7 @@ def get_notifications(request, latest_id=None, is_viewed=False, max_results=10):
 
 @login_required
 def goto(request, notification_id=None):
-    referer = request.META.get('HTTP_REFERER', '')
+    referer = request.headers.get('referer', '')
     if not notification_id:
         return redirect(referer)
     notification = get_object_or_404(models.Notification, 
