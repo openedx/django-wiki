@@ -12,9 +12,9 @@ ATTACHMENT_RE = re.compile(r'.*(\[attachment\:(?P<id>\d+)\]).*', re.IGNORECASE)
 class AttachmentExtension(markdown.Extension):
     """ Abbreviation Extension for Python-Markdown. """
 
-    def extendMarkdown(self, md, md_globals):
+    def extendMarkdown(self, md):
         """ Insert AbbrPreprocessor before ReferencePreprocessor. """
-        md.preprocessors.add('dw-attachments', AttachmentPreprocessor(md), '>html_block')
+        md.preprocessors.register(AttachmentPreprocessor(md), 'dw-attachments', 20)
 
 class AttachmentPreprocessor(markdown.preprocessors.Preprocessor):
     """django-wiki attachment preprocessor - parse text for [attachment:id] references. """

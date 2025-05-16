@@ -23,10 +23,8 @@ django-mptt==0.17.0
     # via -r requirements/base.in
 django-sekizai==4.1.0
     # via -r requirements/base.in
-markdown==3.3.7
-    # via
-    #   -c requirements/constraints.txt
-    #   -r requirements/base.in
+markdown==3.8
+    # via -r requirements/base.in
 sorl-thumbnail==12.11.0
     # via -r requirements/base.in
 sqlparse==0.5.3

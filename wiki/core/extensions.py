@@ -7,5 +7,5 @@ class AnchorTagExtension(Extension):
     """
     Custom extension to register anchor tag processor with Markdown.
     """
-    def extendMarkdown(self, md, md_globals):
-        md.treeprocessors.add('AnchorTagProcessor', AnchorTagProcessor(md), '>inline')
+    def extendMarkdown(self, md):
+        md.treeprocessors.register(AnchorTagProcessor(md), 'AnchorTagProcessor', 20)
