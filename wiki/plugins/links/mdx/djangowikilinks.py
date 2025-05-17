@@ -44,14 +44,14 @@ class WikiPathExtension(markdown.Extension):
         # Override defaults with user settings
         super().__init__(**kwargs)
 
-    def extendMarkdown(self, md, md_globals):
+    def extendMarkdown(self, md):
         self.md = md
 
         # append to end of inline patterns
         WIKI_RE =  r'\[(?P<linkTitle>[^\]]+?)\]\(wiki:(?P<wikiTitle>[a-zA-Z\d\./_-]*)\)'
         wikiPathPattern = WikiPath(WIKI_RE, self.config, md=md)
         wikiPathPattern.md = md
-        md.inlinePatterns.add('djangowikipath', wikiPathPattern, "<reference")
+        md.inlinePatterns.register(wikiPathPattern, 'djangowikipath', 170)
 
 
 class WikiPath(markdown.inlinepatterns.Pattern):

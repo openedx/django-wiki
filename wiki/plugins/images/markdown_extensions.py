@@ -13,9 +13,9 @@ from wiki.plugins.images import models
 class ImageExtension(markdown.Extension):
     """ Images plugin markdown extension for django-wiki. """
 
-    def extendMarkdown(self, md, md_globals):
+    def extendMarkdown(self, md):
         """ Insert ImagePreprocessor before ReferencePreprocessor. """
-        md.preprocessors.add('dw-images', ImagePreprocessor(md), '>html_block')
+        md.preprocessors.register(ImagePreprocessor(md), 'dw-images', 20)
 
 class ImagePreprocessor(markdown.preprocessors.Preprocessor):
     """django-wiki image preprocessor - parse text for [image:id align:left|right|center] references. """
