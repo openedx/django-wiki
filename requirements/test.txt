@@ -4,16 +4,16 @@
 #
 #    make upgrade
 #
-asgiref==3.8.1
+asgiref==3.9.2
     # via
     #   -r requirements/base.txt
     #   django
 bleach[css]==6.2.0
     # via -r requirements/base.txt
-coverage[toml]==7.8.0
+coverage[toml]==7.10.7
     # via pytest-cov
     # via
-    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
+    #   -c https:/raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.txt
     #   django-classy-tags
     #   django-js-asset
@@ -26,24 +26,28 @@ django-js-asset==3.1.2
     # via
     #   -r requirements/base.txt
     #   django-mptt
-django-mptt==0.17.0
+django-mptt==0.18.0
     # via -r requirements/base.txt
 django-sekizai==4.1.0
     # via -r requirements/base.txt
 iniconfig==2.1.0
     # via pytest
-markdown==3.8
+markdown==3.9
     # via -r requirements/base.txt
 packaging==25.0
     # via pytest
-pluggy==1.5.0
+pluggy==1.6.0
+    # via
+    #   pytest
+    #   pytest-cov
+pygments==2.19.2
     # via pytest
-pytest==8.3.5
+pytest==8.4.2
     # via
     #   -r requirements/test.in
     #   pytest-cov
     #   pytest-django
-pytest-cov==6.1.1
+pytest-cov==7.0.0
     # via -r requirements/test.in
 pytest-django==4.11.1
     # via -r requirements/test.in
