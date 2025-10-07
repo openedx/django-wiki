@@ -4,11 +4,11 @@
 #
 #    make upgrade
 #
-asgiref==3.8.1
+asgiref==3.10.0
     # via django
 bleach[css]==6.2.0
     # via -r requirements/base.in
-django==4.2.21
+django==4.2.25
     # via
     #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
     #   -r requirements/base.in
@@ -19,11 +19,11 @@ django-classy-tags==4.1.0
     # via django-sekizai
 django-js-asset==3.1.2
     # via django-mptt
-django-mptt==0.17.0
+django-mptt==0.18.0
     # via -r requirements/base.in
 django-sekizai==4.1.0
     # via -r requirements/base.in
-markdown==3.8
+markdown==3.9
     # via -r requirements/base.in
 sorl-thumbnail==12.11.0
     # via -r requirements/base.in
