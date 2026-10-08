@@ -1,0 +1,126 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm>8.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openedx-django-wiki"
+description = "A wiki system written for the Django framework."
+requires-python = ">=3.12"
+license = "GPL-3.0-only"
+license-files = ["src/wiki/COPYING", "src/django_notify/COPYING"]
+authors = [
+    {name = "Open edX Project", email = "oscm@openedx.org"},
+]
+classifiers = [
+    'Development Status :: 2 - Pre-Alpha',
+    'Environment :: Web Environment',
+    'Framework :: Django',
+    'Framework :: Django :: 4.2',
+    'Framework :: Django :: 5.2',
+    'Intended Audience :: Developers',
+    'Operating System :: OS Independent',
+    'Programming Language :: Python :: 3.12',
+    'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+    'Topic :: Software Development',
+    'Topic :: Software Development :: Libraries :: Application Frameworks',
+]
+keywords = [
+    "django",
+    "wiki",
+    "markdown",
+]
+
+dynamic = ["readme", "version"]
+
+dependencies = [
+    "bleach[css]>=6.0.0",
+    "django",
+    "django-mptt",
+    "django-sekizai",
+    "Markdown",
+    "sorl-thumbnail",
+]
+
+[project.urls]
+Homepage = "https://github.com/openedx/django-wiki"
+Repository = "https://github.com/openedx/django-wiki"
+
+[dependency-groups]
+test-base = [
+    "pytest",
+    "pytest-cov",
+    "pytest-django",
+]
+test = [
+    {include-group = "test-base"},
+    "Django>=5.2,<6.0",
+]
+django42 = [
+    {include-group = "test-base"},
+    "Django>=4.2,<5.0",
+]
+doc = [
+    {include-group = "test"},
+    "sphinx-book-theme",
+    "Sphinx",
+]
+ci = [
+    "tox",
+    "tox-uv",
+]
+dev = [
+    {include-group = "test"},
+    {include-group = "doc"},
+    {include-group = "ci"},
+]
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.dynamic]
+readme = {file = ["README.md"], content-type = "text/markdown"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = [
+    "*.html",
+    "*.png",
+    "*.gif",
+    "*.js",
+    "*.css",
+    "*.jpg",
+    "*.jpeg",
+    "*.svg",
+    "*.txt",
+    "*.json",
+]
+
+[tool.semantic_release]
+build_command = "pip install build && SETUPTOOLS_SCM_PRETEND_VERSION=$NEW_VERSION python -m build"
+
+[tool.semantic_release.branches.edx_release]
+match = "edx_release"
+
+[tool.setuptools_scm]
+version_scheme = 'only-version'
+local_scheme = 'no-local-version'
+fallback_version = "0.0.0.dev0"
+
+[tool.uv]
+package = true
+conflicts = [
+    [{group = "test"}, {group = "django42"}],
+]
+constraint-dependencies = [
+    "Django<6.0",
+    "elasticsearch<7.14.0",
+    "social-auth-app-django<6.0.0",
+    "social-auth-core<5.0.0",
+    "pip<26.2.1",
+]
+
+[tool.edx_lint]
+uv_constraints = []
+
