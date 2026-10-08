@@ -1,8 +1,0 @@
-# Packages required for testing
--c constraints.txt
-
--r base.txt
-
-pytest
-pytest-cov
-pytest-django

@@ -76,7 +76,7 @@ The above line puts the wiki in */* so it's important to put it at the end of yo
 
 ### Settings
 
-For now, look in [wiki/conf/settings.py](wiki/conf/settings.py) to see a list of available settings.
+For now, look in [src/wiki/conf/settings.py](src/wiki/conf/settings.py) to see a list of available settings.
 
 ### Other tips
 
@@ -127,7 +127,7 @@ So far the dependencies are:
 Development
 ------------
 
-In a your Git fork, run `pip install -r requirements.txt` to install the requirements.
+In a your Git fork, run `uv sync --group dev` to install the requirements.
 
 The folder **testproject/** contains a pre-configured django project and an sqlite database. Login for django admin is *admin:admin*. This project should always be maintained, although the sqlite database will be deleted very soon to avoid unnecessary conflicts.
 
