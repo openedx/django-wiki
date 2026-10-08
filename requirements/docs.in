@@ -1,5 +1,0 @@
-# Used by doc builds (like for edx.readthedocs.io)
--c constraints.txt
-
-sphinx-book-theme
-Sphinx
