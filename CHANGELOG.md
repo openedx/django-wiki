@@ -1,3 +1,5 @@
+> **DEPRECATED:** This changelog is no longer maintained. Release notes are published on [GitHub Releases](https://github.com/openedx/django-wiki/releases).
+
 # Changelog
 
 ## [3.1.1] - 2025-05-16
