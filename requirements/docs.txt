@@ -14,7 +14,7 @@ babel==2.17.0
     #   sphinx
 beautifulsoup4==4.13.4
     # via pydata-sphinx-theme
-certifi==2025.4.26
+certifi==2026.10.19
     # via requests
 charset-normalizer==3.4.2
     # via requests
@@ -73,6 +73,4 @@ typing-extensions==4.13.2
     #   beautifulsoup4
     #   pydata-sphinx-theme
 urllib3==2.2.3
-    # via
-    #   -c https://raw.githubusercontent.com/edx/edx-lint/master/edx_lint/files/common_constraints.txt
-    #   requests
+    # via requests
