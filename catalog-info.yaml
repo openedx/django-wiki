@@ -20,4 +20,4 @@ metadata:
 spec:
   type: 'service'
   lifecycle: 'production'
-  owner: 2U-aperture
+  owner: group:openedx-unmaintained
