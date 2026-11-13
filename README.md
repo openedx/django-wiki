@@ -61,7 +61,7 @@ Add `'sekizai.context_processors.sekizai'` to `settings.TEMPLATE_CONTEXT_PROCESS
 
 ### Include urlpatterns
 
-To integrate the wiki to your existing application, you shoud add the following lines at the end of your project's `urls.py`.
+To integrate the wiki to your existing application, you should add the following lines at the end of your project's `urls.py`.
 
     from wiki.urls import get_pattern as get_wiki_pattern
     from django_notify.urls import get_pattern as get_notify_pattern
